@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5852109704025706599
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04312374
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.04312374
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.04312374
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 706.159
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.262
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 892.897
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f9502d14f33c2ff488e5fefe60f6fad4, type: 2}
+    - target: {fileID: -7421033346236238759, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_Name
+      value: ponderosa_seedling
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156380648761706199, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5f5ac7041bcd5334fb10db75b7dfd10d, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: -7029948723529949830, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+    - {fileID: -7421033346236238759, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6609936720054711673}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1420716247902301538}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1708571441152030370}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6371623182996390037}
+  m_SourcePrefab: {fileID: 100100000, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+--- !u!1 &6771081865515019574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a92b69c9336ff147a947c3594acd914, type: 3}
+  m_PrefabInstance: {fileID: 5852109704025706599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6609936720054711673
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771081865515019574}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 22.45, z: 3.5}
+  m_Center: {x: 0, y: 11.7, z: 0}
+--- !u!114 &1420716247902301538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771081865515019574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd34a8f903fe273499cadf86c795fa63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaticHarvestItems
+  interactable: 1
+  interactName: Ponderosa Seedling
+  item: {fileID: 0}
+  interactOptions: []
+  withinZone: 0
+  interacted: 0
+  id: 
+  harvestItems:
+  - item: {fileID: 5997696837974842501, guid: 6fbd02905b71e4d47af63b429a6954b9, type: 3}
+    randomCountRange: {x: 1, y: 1}
+    assignedCount: 0
+    interactTime: 3
+    saveTime: 1
+    destroyObject: 1
+    infinite: 0
+    onHarvest: {fileID: 6371623182996390037}
+--- !u!114 &-1708571441152030370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771081865515019574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0a92acc9d24db4c8b7433032303985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HarvestTerrainTree
+--- !u!114 &6371623182996390037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771081865515019574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695c88829236e014abfcafcb298a77df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundPlayer
+  clips:
+  - {fileID: 8300000, guid: aafd3ee2ada3d834fb5f2d7c53579a38, type: 3}
+  - {fileID: 8300000, guid: 2637c7bd5956d6045bbb4e733c972a24, type: 3}
+  volume: 1
+  spatial: 0

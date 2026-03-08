@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4892333828424205659
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2046
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2046
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2046
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 710.52
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.942
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 901.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 38378dd450cfee346bd5e334a9fd2742, type: 2}
+    - target: {fileID: 919132149155446097, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_Name
+      value: obsidian_chunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7261451061268934306}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3740779239120190442}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -543911542772286698}
+  m_SourcePrefab: {fileID: 100100000, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+--- !u!1 &5702795607200446474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+  m_PrefabInstance: {fileID: 4892333828424205659}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &7261451061268934306
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702795607200446474}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 289301614986012343, guid: 2c042a6df44cb424b91ed29a42446165, type: 3}
+--- !u!114 &-3740779239120190442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702795607200446474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616610a6ffe8f85418fc58a9fb79e663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ForageItem
+  interactable: 1
+  interactName: Obsidian Chunk
+  item: {fileID: 0}
+  interactOptions:
+  - text: Harvest
+    interactTime: 0.5
+    saveTime: 0
+    itemQuantity:
+      item: {fileID: 8061688693916207224, guid: a72a24144a709b24996a7f783e470af6, type: 3}
+      amount: 1
+  withinZone: 0
+  interacted: 0
+  preventWorldFalling: 1
+  onStore: {fileID: -543911542772286698}
+  forageItem: {fileID: 8061688693916207224, guid: a72a24144a709b24996a7f783e470af6, type: 3}
+  onHarvest: {fileID: -543911542772286698}
+--- !u!114 &-543911542772286698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702795607200446474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695c88829236e014abfcafcb298a77df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundPlayer
+  clips:
+  - {fileID: 8300000, guid: da363c4b263f07341b58c4df44ea0a5d, type: 3}
+  - {fileID: 8300000, guid: c67d1d6340ceb854b88f8c14b4db039a, type: 3}
+  - {fileID: 8300000, guid: 7abb7b46e6ea6ac4484b54718728452a, type: 3}
+  volume: 1

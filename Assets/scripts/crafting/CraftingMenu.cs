@@ -10,6 +10,8 @@ public class CraftingMenu : MonoBehaviour
 
     public GameObject root;
     public Button btnClose;
+    public string openKey = "c";
+    public PlayerWheelOptionCrafting wheelOption;
 
     public SoundPlayer selectSound;
     public CraftingStation currentStation { get; set; }
@@ -34,6 +36,7 @@ public class CraftingMenu : MonoBehaviour
     List<GameObject> tempComps = new List<GameObject>();
     List<GameObject> tempTool = new List<GameObject>();
 
+    CraftingRecipeUI currentSelection;
     bool passingTime;
 
     private void Awake()
@@ -48,6 +51,14 @@ public class CraftingMenu : MonoBehaviour
         CloseMenu();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(openKey) && !root.activeSelf && !PlayerMovement.IsMovementLocked() && !BuildingMenu.runtime.root.activeSelf)
+        {
+            OpenMenu(wheelOption.recipes, null);
+        }
+    }
+
     public void OpenMenu(List<CraftingRecipe> recipes, CraftingStation station)
     {
         if (passingTime)
@@ -56,6 +67,7 @@ public class CraftingMenu : MonoBehaviour
         currentStation = station;
 
         PlayerMovement.LockMovement(gameObject, true);
+        PlayerEquip.runtime.Unequip(PlayerEquip.runtime.current);
         FillRecipes(recipes);
         root.SetActive(true);
 
@@ -76,30 +88,36 @@ public class CraftingMenu : MonoBehaviour
     {
         ClearTempRecipes();
         current = recipes;
+        CraftingRecipeUI first = null;
         foreach(CraftingRecipe recipe in recipes.OrderBy(r => r.OrderByIndex()))
         {
             CraftingRecipeUI inst = Instantiate(recipePrefab.gameObject, recipesLayout).GetComponent<CraftingRecipeUI>();
             inst.Initialize(recipe, recipe.HasTools() && recipe.HasComponents());
-            inst.btnMain.onClick.AddListener(() => SelectRecipe(inst.recipe));
+            inst.btnMain.onClick.AddListener(() => SelectRecipe(inst));
             tempRecipes.Add(inst.gameObject);
+            if (first == null) first = inst;
         }
-        if (recipes.Count > 0) SelectRecipe(recipes[0]);
+        if (recipes.Count > 0) SelectRecipe(first);
     }
 
-    void SelectRecipe(CraftingRecipe recipe)
+    void SelectRecipe(CraftingRecipeUI rui)
     {
-        if (passingTime)
+        if (passingTime || rui == null)
             return;
 
         selectSound.PlaySound();
 
+        if(currentSelection) currentSelection.Deselect();
+        rui.Select();
+        currentSelection = rui;
+
         ClearTempComps();
-        txtProductName.text = recipe.product.itemName;
+        txtProductName.text = rui.recipe.product.itemName;
 
         bool hasComps = true;
         bool hasToolTypes = true;
 
-        foreach (ItemQuantity comp in recipe.components)
+        foreach (ItemQuantity comp in rui.recipe.components)
         {
             CraftingComponentUI inst = Instantiate(componentPrefab.gameObject, componentsLayout).GetComponent<CraftingComponentUI>();
             inst.Initialize(comp);
@@ -112,7 +130,7 @@ public class CraftingMenu : MonoBehaviour
 
             tempComps.Add(inst.gameObject);
         }
-        foreach (ToolType type in recipe.toolTypes)
+        foreach (ToolType type in rui.recipe.toolTypes)
         {
             CraftingToolTypeUI inst = Instantiate(toolTypePrefab.gameObject, toolTypesLayout).GetComponent<CraftingToolTypeUI>();
             inst.Initialize(type);
@@ -134,7 +152,7 @@ public class CraftingMenu : MonoBehaviour
 
             tempComps.Add(inst.gameObject);
         }
-        if (recipe.toolTypes.Count <= 0)
+        if (rui.recipe.toolTypes.Count <= 0)
         {
             CraftingToolTypeUI blank = Instantiate(toolTypePrefab.gameObject, toolTypesLayout).GetComponent<CraftingToolTypeUI>();
             blank.Initialize();
@@ -142,17 +160,17 @@ public class CraftingMenu : MonoBehaviour
         }
 
         btnCraft.onClick.RemoveAllListeners();
-        btnCraft.onClick.AddListener(() => CraftRecipe(recipe));
+        btnCraft.onClick.AddListener(() => CraftRecipe(rui.recipe));
 
         btnCraft.interactable = hasComps && hasToolTypes;
         quantityCounter.SetInteractable(hasComps && hasToolTypes);
 
         quantityCounter.min = 1;
-        quantityCounter.max = Mathf.Clamp(recipe.QuantityCraftable(), 0, 100);
+        quantityCounter.max = Mathf.Clamp(rui.recipe.QuantityCraftable(), 0, 100);
 
         quantityCounter.onValueChange.AddListener(() =>
         {
-            btnCraft.GetComponentInChildren<TextMeshProUGUI>().text = $"Craft ({GetTime(recipe, quantityCounter.value)} hrs)";
+            btnCraft.GetComponentInChildren<TextMeshProUGUI>().text = $"Craft ({GetTime(rui.recipe, quantityCounter.value)} hrs)";
         });
         quantityCounter.SetValue(1);
 
@@ -190,11 +208,10 @@ public class CraftingMenu : MonoBehaviour
 
         }
         FillRecipes(current);
-        SelectRecipe(recipe);
+        SelectRecipe(currentSelection);
 
         Fader.runtime.FadeIn(() => {
             passingTime = false;
-            SelectRecipe(recipe);
         });
     }
 

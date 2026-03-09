@@ -760,6 +760,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  faunaName: Cottontail
   harvestCarcassSound: {fileID: 8300000, guid: 75ceba40fa9f022458e6a2d7eff702a4, type: 3}
   hearRadius: 25
   hearLoudRadius: 50

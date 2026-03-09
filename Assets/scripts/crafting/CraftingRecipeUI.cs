@@ -15,11 +15,38 @@ public class CraftingRecipeUI : MonoBehaviour
     public Color craftableColor;
     public Color uncraftableColor;
 
+    public GameObject selectionIndicator;
+
+    [System.Serializable]
+    public struct NameException
+    {
+        public CraftingRecipe recipe;
+        public string name;
+    }
+    public List<NameException> exceptions = new List<NameException>();
+
     public void Initialize(CraftingRecipe recipe, bool craftable)
     {
         this.recipe = recipe;
-        txtProductName.text = recipe.product.itemName;
-        txtTime.text = "" + recipe.timeInHours;
+
+        selectionIndicator.SetActive(false);
+
+        txtTime.text = $"{recipe.timeInHours} hrs";
         txtProductName.color = craftable ? craftableColor : uncraftableColor;
+
+        NameException except = exceptions.Find(e => e.recipe == recipe);
+        if(except.recipe)
+            txtProductName.text = except.name;
+        else
+            txtProductName.text = recipe.product.itemName;
+    }
+
+    public void Select()
+    {
+        selectionIndicator.SetActive(true);
+    }
+    public void Deselect()
+    {
+        selectionIndicator.SetActive(false);
     }
 }

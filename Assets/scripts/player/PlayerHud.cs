@@ -12,6 +12,7 @@ public class PlayerHud : MonoBehaviour
 
     public int displayMessageLength = 2000;
 
+    public GameObject crosshair;
     public GameObject crouchIndicator;
 
     public GameObject wheelRoot;
@@ -36,7 +37,7 @@ public class PlayerHud : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !PlayerMovement.IsMovementLocked() && !BuildingMenu.runtime.root.activeSelf)
         {
             PlayerMovement.LockMovement(gameObject, true);
             wheelRoot.SetActive(true);
@@ -70,7 +71,7 @@ public class PlayerHud : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Tab))
+        if (wheelRoot.activeSelf && Input.GetKeyUp(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (selection)
             {
@@ -83,5 +84,14 @@ public class PlayerHud : MonoBehaviour
 
         if (!Input.GetKey(KeyCode.Tab))
             return;
+    }
+
+    public void DisableCrosshair()
+    {
+        crosshair.SetActive(false);
+    }
+    public void EnableCrosshair()
+    {
+        crosshair.SetActive(true);
     }
 }

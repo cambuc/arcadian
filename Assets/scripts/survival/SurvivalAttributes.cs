@@ -49,9 +49,9 @@ public class SurvivalAttributes : MonoBehaviour
     {
         //Debug.Log($"{TimeManager.runtime.currentDateTime.ToLongTimeString()} | {thirst}");
         AddTemperature(GetDrainTemperature());
-        AddThirst((1 / (baseGainRateThirst * 720)) * GetMultThirst());
-        AddHunger((1 / (baseGainRateHunger * 720)) * GetMultHunger());
-        AddFatigue((1 / (baseGainRateFatigue * 720)) * GetMultFatigue());
+        AddThirst((drainCallLoopSeconds / (baseGainRateThirst * 3600)) * GetMultThirst());
+        AddHunger((drainCallLoopSeconds / (baseGainRateHunger * 3600)) * GetMultHunger());
+        AddFatigue((drainCallLoopSeconds / (baseGainRateFatigue * 3600)) * GetMultFatigue());
 
         if (thirst >= 1) DeathScreen.runtime.ShowDeathScreen("You succumbed to dehydration");
         if (hunger >= 1) DeathScreen.runtime.ShowDeathScreen("You succumbed to starvation");
@@ -65,9 +65,9 @@ public class SurvivalAttributes : MonoBehaviour
     private void UpdateUI()
     {
         tempBar.Value = (temperature + 1) / 2f;
-        thirstBar.Value = thirst;
-        hungerBar.Value = hunger;
-        fatigueBar.Value = fatigue;
+        thirstBar.Value = 1 - thirst;
+        hungerBar.Value = 1 - hunger;
+        fatigueBar.Value = 1 - fatigue;
 
         //txtTempGain.text = GetGainText(GetDrainTemperature());
         //txtThirstGain.text = GetGainText(GetMultThirst());

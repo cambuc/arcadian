@@ -162,6 +162,11 @@ public class PlayerInventory : MonoBehaviour
             items.Find(i => i.itemName == item.itemName).Drop();
             ShowFullInventoryMessage();
         }
+        if (item.GetComponent<FirearmItem>())
+        {
+            item.GetComponent<FirearmItem>().loadedCount = 0;
+            item.GetComponent<FirearmItem>().chambered = false;
+        }
 
         onInventoryChanged.Invoke();
     }

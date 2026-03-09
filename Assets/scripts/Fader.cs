@@ -8,6 +8,8 @@ public class Fader : MonoBehaviour
 {
     public static Fader runtime;
 
+    public bool fadeAudio;
+
     private void Awake()
     {
         runtime = this;
@@ -19,6 +21,7 @@ public class Fader : MonoBehaviour
     private void Start()
     {
         FadeIn();
+        if (!fadeAudio) AudioListener.volume = 1;
     }
 
     public async Task FadeOut(float time)
@@ -26,6 +29,8 @@ public class Fader : MonoBehaviour
         for(float i = 0; i < time; i += 0.025f)
         {
             fader.color = new Color(fader.color.r, fader.color.g, fader.color.b, Mathf.Lerp(0, 1, i / time));
+            if (fadeAudio)
+                AudioListener.volume = 1 - (i / time);
             await Task.Delay(25);
         }
     }
@@ -34,6 +39,8 @@ public class Fader : MonoBehaviour
         for (float i = 0; i < time; i += 0.025f)
         {
             fader.color = new Color(fader.color.r, fader.color.g, fader.color.b, Mathf.Lerp(1, 0, i / time));
+            if (fadeAudio)
+                AudioListener.volume = (i / time);
             await Task.Delay(25);
         }
     }

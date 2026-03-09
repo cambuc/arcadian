@@ -9,8 +9,6 @@ public class StaticHarvestItems : Interactable
 
     public override void SetInteractOptions()
     {
-        if (GetComponent<TreeFeller>())
-            interactOptions.Add(new InteractOption() { text = "Fell", interactTime = 0.5f });
         for (int i = 0; i < harvestItems.Count; i++)
         {
             HarvestItem hi = harvestItems[i];
@@ -19,6 +17,8 @@ public class StaticHarvestItems : Interactable
             if (hi.assignedCount > 0 || hi.infinite || hi.destroyObject)
                 interactOptions.Add(BuildInteractOption(hi));
         }
+        if (GetComponent<TreeFeller>())
+            interactOptions.Add(new InteractOption() { text = "Fell", interactTime = 0.5f });
     }
 
     public override void Interact(string interactOption)

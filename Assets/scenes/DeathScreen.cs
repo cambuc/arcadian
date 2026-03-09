@@ -14,6 +14,8 @@ public class DeathScreen : MonoBehaviour
     public Button btnRetry;
     public Button btnQuit;
 
+    public int deathSceneIndex = 2;
+
     private void Awake()
     {
         runtime = this;
@@ -30,7 +32,7 @@ public class DeathScreen : MonoBehaviour
             Fader.runtime.FadeOut(() =>
             {
                 PlayerMovement.LockMovement(gameObject, false);
-                SceneManager.LoadSceneAsync(1);
+                SceneManager.LoadSceneAsync(deathSceneIndex);
             });
         });
         btnQuit.onClick.AddListener(() =>

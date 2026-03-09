@@ -50,7 +50,7 @@ MonoBehaviour:
   components:
   - item: {fileID: -853179339854352053, guid: e258eaa03c92cde4cad6ac0a26aa0e3f, type: 3}
     amount: 5
-  - item: {fileID: 8061688693916207224, guid: 737fb5adee356384dab9bab261c2a18d, type: 3}
+  - item: {fileID: 8061688693916207224, guid: 71e95232543ceec4686d93b9ba19e357, type: 3}
     amount: 3
   toolTypes: []
   groundHeightOffset: 0.2

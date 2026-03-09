@@ -87,9 +87,9 @@ public class InteractOptionsMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.mouseScrollDelta.y > 0 && root.gameObject.activeSelf)
+        if ((Input.mouseScrollDelta.y > 0 || Input.GetKeyDown(KeyCode.UpArrow)) && root.gameObject.activeSelf)
             ScrollUp();
-        if (Input.mouseScrollDelta.y < 0 && root.gameObject.activeSelf)
+        if ((Input.mouseScrollDelta.y < 0 || Input.GetKeyDown(KeyCode.DownArrow)) && root.gameObject.activeSelf)
             ScrollDown();
     }
 

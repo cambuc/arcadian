@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5815239156942081080}
   - component: {fileID: 2432144260864872817}
   - component: {fileID: -3995131193244986388}
+  - component: {fileID: -613308576731419956}
   m_Layer: 6
   m_Name: juniper_mature
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MonoBehaviour:
     saveTime: 0
     destroyObject: 0
     infinite: 0
-    onHarvest: {fileID: -3995131193244986388}
+    onHarvest: {fileID: -613308576731419956}
   - item: {fileID: 5997696837974842501, guid: 28c0c67ca2896ad4fb8eecb35ef153a0, type: 3}
     randomCountRange: {x: 3, y: 8}
     assignedCount: 0
@@ -100,7 +101,7 @@ MonoBehaviour:
     saveTime: 0
     destroyObject: 0
     infinite: 0
-    onHarvest: {fileID: -3995131193244986388}
+    onHarvest: {fileID: -613308576731419956}
   - item: {fileID: -853179339854352053, guid: e258eaa03c92cde4cad6ac0a26aa0e3f, type: 3}
     randomCountRange: {x: 5, y: 10}
     assignedCount: 0
@@ -132,5 +133,23 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: aafd3ee2ada3d834fb5f2d7c53579a38, type: 3}
   - {fileID: 8300000, guid: 2637c7bd5956d6045bbb4e733c972a24, type: 3}
+  volume: 1
+  spatial: 0
+--- !u!114 &-613308576731419956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614867540785974425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695c88829236e014abfcafcb298a77df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundPlayer
+  clips:
+  - {fileID: 8300000, guid: b770b81db4007fc4bbd6ac9865ce6760, type: 3}
+  - {fileID: 8300000, guid: 61a970465704a55458b3de70d9284a92, type: 3}
+  - {fileID: 8300000, guid: 55ce17046bad43340b83072f72790d8f, type: 3}
   volume: 1
   spatial: 0

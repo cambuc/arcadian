@@ -13,6 +13,7 @@ public class PlayerInventoryUI : MonoBehaviour
     public static UnityEvent<Item> onClose = new UnityEvent<Item>();
 
     public PlayerInventoryUIItem prefab;
+    public string openKey = "i";
 
     [Header("Sounds")]
     public SoundPlayer selectItemSound;
@@ -59,6 +60,10 @@ public class PlayerInventoryUI : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(openKey) && !root.activeSelf && !PlayerMovement.IsMovementLocked() && !BuildingMenu.runtime.root.activeSelf)
+        {
+            OpenInventory();
+        }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             PointerEventData pointerData = new PointerEventData(EventSystem.current);

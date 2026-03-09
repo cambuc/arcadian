@@ -42,7 +42,7 @@ public class Campfire : CraftingStation
     public override void Interact(string interactOption)
     {
         interactSound.PlaySound();
-        if (interactOption == "Cook")
+        if (interactOption == "Craft")
         {
             CraftingMenu.runtime.OpenMenu(recipes, this);
         }
@@ -77,7 +77,7 @@ public class Campfire : CraftingStation
             fireTime = baseFireTime;
 
             interactOptions.Clear();
-            interactOptions.Add(new InteractOption() { text = "Cook" });
+            interactOptions.Add(new InteractOption() { text = "Craft" });
             interactOptions.Add(new InteractOption() { text = "Add Fuel" });
 
             Fader.runtime.FadeIn(() =>

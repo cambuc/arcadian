@@ -56,7 +56,7 @@ public class BuildingMenu : MonoBehaviour
         if (PlayerMovement.IsMovementLocked())
             return;
 
-        if (Input.GetKeyDown(openKey) && !root.activeSelf)
+        if (Input.GetKeyDown(openKey) && !root.activeSelf && !PlayerMovement.IsMovementLocked())
         {
             OpenMenu();
         }
@@ -69,17 +69,17 @@ public class BuildingMenu : MonoBehaviour
             return;
 
         if ((Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.A)) ||
-            Input.GetKeyDown(KeyCode.LeftArrow))
+            Input.GetKeyDown(KeyCode.LeftArrow) || Input.mouseScrollDelta.y > 0)
         {
             SelectRecipe(selectionIndex - 1);
         }
         if ((Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.D)) ||
-            Input.GetKeyDown(KeyCode.RightArrow))
+            Input.GetKeyDown(KeyCode.RightArrow) || Input.mouseScrollDelta.y < 0)
         {
             SelectRecipe(selectionIndex + 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && selections[selectionIndex].buildable)
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.KeypadEnter)) && selections[selectionIndex].buildable)
         {
             PlaceBuilding();
         }
@@ -92,6 +92,7 @@ public class BuildingMenu : MonoBehaviour
     {
         FillLayout();
         root.SetActive(true);
+        PlayerEquip.runtime.Unequip(PlayerEquip.runtime.current);
     }
     public void CloseMenu()
     {
@@ -126,8 +127,8 @@ public class BuildingMenu : MonoBehaviour
 
     void SelectRecipe(int index)
     {
-        if (index >= selections.Count || index < 0)
-            return;
+        if (index >= selections.Count) index = 0;
+        else if (index < 0) index = selections.Count - 1;
 
         ClearComps();
 

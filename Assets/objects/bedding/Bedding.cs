@@ -6,6 +6,7 @@ public class Bedding : Interactable
     public Vector2 counterRange;
     public float counterStep = 0.5f;
     public float hourFatigueMult = 0.1f;
+    public float survivalDrainMult = -0.5f;
 
     public override void Interact(string interactOption)
     {
@@ -21,9 +22,17 @@ public class Bedding : Interactable
 
         Fader.runtime.FadeOut(() =>
         {
+            SurvivalAttributes.runtime.multipliersThirst.Add("resting", survivalDrainMult);
+            SurvivalAttributes.runtime.multipliersHunger.Add("resting", survivalDrainMult);
+            SurvivalAttributes.runtime.multipliersFatigue.Add("resting", survivalDrainMult);
+
             TimeManager.runtime.PassTime(60 * 60 * amount);
             SurvivalAttributes.runtime.AddFatigue(-hourFatigueMult * amount);
             Fader.runtime.FadeIn();
+
+            SurvivalAttributes.runtime.multipliersThirst.Remove("resting");
+            SurvivalAttributes.runtime.multipliersHunger.Remove("resting");
+            SurvivalAttributes.runtime.multipliersFatigue.Remove("resting");
         });
     }
 }

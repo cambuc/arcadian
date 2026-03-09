@@ -9,6 +9,8 @@ public class FaunaBehavior : Attackable
 
     public UnityEvent onDeath = new UnityEvent();
 
+    public string faunaName;
+
     public AudioClip harvestCarcassSound;
 
     public float hearRadius;
@@ -208,8 +210,7 @@ public class FaunaBehavior : Attackable
             onDeath.Invoke();
 
             gameObject.AddComponent<DownedAnimal>();
-            gameObject.GetComponent<DownedAnimal>().harvestItems = harvestItems;
-            gameObject.GetComponent<DownedAnimal>().harvestSound = harvestCarcassSound;
+            gameObject.GetComponent<DownedAnimal>().Initiate(this);
 
             //Vector3 pos = transform.position;
 

@@ -123,6 +123,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 992b0da2f71c0774ba259e03187983d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 872421515550943843}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 992b0da2f71c0774ba259e03187983d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6618184314600204649}
   m_SourcePrefab: {fileID: 100100000, guid: 992b0da2f71c0774ba259e03187983d8, type: 3}
 --- !u!1 &4939021380388803620 stripped
 GameObject:
@@ -179,7 +182,7 @@ MonoBehaviour:
     saveTime: 0
     destroyObject: 0
     infinite: 0
-    onHarvest: {fileID: 872421515550943843}
+    onHarvest: {fileID: 6618184314600204649}
   - item: {fileID: 5997696837974842501, guid: 28c0c67ca2896ad4fb8eecb35ef153a0, type: 3}
     randomCountRange: {x: 1, y: 5}
     assignedCount: 0
@@ -195,7 +198,7 @@ MonoBehaviour:
     saveTime: 0
     destroyObject: 0
     infinite: 0
-    onHarvest: {fileID: 872421515550943843}
+    onHarvest: {fileID: 6618184314600204649}
   - item: {fileID: -853179339854352053, guid: e258eaa03c92cde4cad6ac0a26aa0e3f, type: 3}
     randomCountRange: {x: -1, y: 2}
     assignedCount: 0
@@ -227,5 +230,23 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: aafd3ee2ada3d834fb5f2d7c53579a38, type: 3}
   - {fileID: 8300000, guid: 2637c7bd5956d6045bbb4e733c972a24, type: 3}
+  volume: 1
+  spatial: 0
+--- !u!114 &6618184314600204649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4939021380388803620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695c88829236e014abfcafcb298a77df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundPlayer
+  clips:
+  - {fileID: 8300000, guid: b770b81db4007fc4bbd6ac9865ce6760, type: 3}
+  - {fileID: 8300000, guid: 61a970465704a55458b3de70d9284a92, type: 3}
+  - {fileID: 8300000, guid: 55ce17046bad43340b83072f72790d8f, type: 3}
   volume: 1
   spatial: 0

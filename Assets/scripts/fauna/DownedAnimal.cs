@@ -6,9 +6,13 @@ public class DownedAnimal : Interactable
     public List<ItemQuantity> harvestItems = new List<ItemQuantity>();
     public AudioClip harvestSound;
 
-    private void Awake()
+    public void Initiate(FaunaBehavior fb)
     {
         gameObject.layer = LayerMask.NameToLayer("Interactable");
+
+        harvestItems = fb.harvestItems;
+        harvestSound = fb.harvestCarcassSound;
+        interactName = $"{fb.faunaName} Carcass";
 
         interactOptions.Add(new InteractOption() { text = "Harvest", interactTime = 0.5f });
     }

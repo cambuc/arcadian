@@ -82,6 +82,7 @@ MonoBehaviour:
   counterRange: {x: 0.5, y: 12}
   counterStep: 0.5
   hourFatigueMult: 0.25
+  survivalDrainMult: -0.75
 --- !u!1001 &8495360623293887323
 PrefabInstance:
   m_ObjectHideFlags: 0

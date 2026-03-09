@@ -21,7 +21,7 @@ public class ButtonShortcut : MonoBehaviour
         {
             foreach (string shortcut in shortcuts)
             {
-                if (Input.GetKeyUp(shortcut))
+                if (Input.GetKeyDown(shortcut))
                 {
                     GetComponent<Button>().onClick.Invoke();
                 }

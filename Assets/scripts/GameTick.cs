@@ -10,6 +10,8 @@ public class GameTick : MonoBehaviour
 
     public int tickLength = 1000;
 
+    public bool paused { get; private set; }
+
     private void Awake()
     {
         runtime = this;
@@ -20,12 +22,28 @@ public class GameTick : MonoBehaviour
         Tick();
     }
 
+    bool runningTick;
     async void Tick()
     {
-        while (Application.isPlaying)
+        if (runningTick)
+            return;
+
+        runningTick = true;
+        while (Application.isPlaying && !paused)
         {
             tick.Invoke();
             await Task.Delay(tickLength);
         }
+    }
+
+    public void Pause()
+    {
+        paused = true;
+        runningTick = false;
+    }
+    public void Unpause()
+    {
+        paused = false;
+        Tick();
     }
 }

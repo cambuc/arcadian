@@ -15,6 +15,8 @@ public class TimeManager : MonoBehaviour
     public List<WaitCall> waitCalls = new List<WaitCall>();
     public List<WaitCallLoop> waitCallLoops = new List<WaitCallLoop>();
 
+    public bool paused { get; private set; }
+
     private void Awake()
     {
         runtime = this;
@@ -24,8 +26,20 @@ public class TimeManager : MonoBehaviour
         currentDateTime = new DateTime(startDateTime.year, startDateTime.month, startDateTime.day, startDateTime.hour, startDateTime.minute, 0);
     }
 
+    public void PauseTime()
+    {
+        paused = true;
+    }
+    public void UnpauseTime()
+    {
+        paused = false;
+    }
+
     void Tick()
     {
+        if (paused || timeMult <= 0)
+            return;
+
         UpdateTime();
     }
 

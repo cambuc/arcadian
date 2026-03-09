@@ -8,7 +8,6 @@ public class HuntingRifle : Equippable
     public FirearmItem item;
 
     public int magazineCapacity;
-    public float doubleClickTime;
 
     public GameObject chamberedCartridgeObject;
     public GameObject chamberedCasingObject;
@@ -31,7 +30,8 @@ public class HuntingRifle : Equippable
     public float recoilPushback;
 
     [Header("Controls")]
-    public string reloadControl = "r";
+    public string chamberControl = "r";
+    public string reloadControl = "t";
     public string inspectChamberControl = "f";
     public string inspectMagazineControl = "g";
 
@@ -53,9 +53,6 @@ public class HuntingRifle : Equippable
     //Vector3 camStartPos;
 
     bool busy;
-
-    float doubleClickTimer;
-    bool waitingToChamber;
 
     public override void Equip(UnityAction onEquipped)
     {
@@ -81,40 +78,31 @@ public class HuntingRifle : Equippable
 
     private void Update()
     {
-        doubleClickTimer -= Time.deltaTime;
-
         if (PlayerMovement.runtime.crouching) anim.SetBool("Stable", true);
         else anim.SetBool("Stable", false);
 
         //Chamber a Round
-        if (doubleClickTimer <= 0 && waitingToChamber)
+        if (Input.GetKeyDown(chamberControl) && !busy)
         {
-            waitingToChamber = false;
             Chamber();
         }
 
         //Reload Magazine
-        if (Input.GetKeyDown(reloadControl) && !busy && doubleClickTimer > 0)
-        {
-            waitingToChamber = false;
-            Reload();
-        }
-
-        //Set Reload/Chamber Timer
         if (Input.GetKeyDown(reloadControl) && !busy)
         {
-            doubleClickTimer = doubleClickTime;
-            waitingToChamber = true;
+            Reload();
         }
 
 
         //Aiming
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            PlayerHud.runtime.DisableCrosshair();
             Aim();
         }
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
+            PlayerHud.runtime.EnableCrosshair();
             ReleaseAim();
         }
 

@@ -208,6 +208,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f29f875540189754783cf5b6282a5423, type: 3}
   - {fileID: 8300000, guid: 6ca6d12414ab34c4ca542e28409be918, type: 3}
   - {fileID: 8300000, guid: 12e805572efecf14a8bdfb283110f3fe, type: 3}
+  group: {fileID: -4746325674826330145, guid: 7bcbc8fa5798a4e4c92db85b918933d5, type: 2}
   volume: 1
   spatial: 1
 --- !u!1001 &6610279399358642085

@@ -67,7 +67,7 @@ public class Campfire : CraftingStation
         }
 
         Tool tool = implement.GetComponent<Tool>();
-        if (tool.useSound) new UniversalPlayer(tool.useSound);
+        if (tool.useSound) new UniversalPlayer(tool.useSound, MixerGroupHolder.runtime.sfx);
 
         Fader.runtime.FadeOut(() =>
         {

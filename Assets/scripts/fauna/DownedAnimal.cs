@@ -27,7 +27,7 @@ public class DownedAnimal : Interactable
 
     void Harvest()
     {
-        new UniversalPlayer(harvestSound);
+        new UniversalPlayer(harvestSound, MixerGroupHolder.runtime.sfx);
         Fader.runtime.FadeOut(() =>
         {
             foreach (ItemQuantity iq in harvestItems)

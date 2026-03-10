@@ -230,6 +230,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: aafd3ee2ada3d834fb5f2d7c53579a38, type: 3}
   - {fileID: 8300000, guid: 2637c7bd5956d6045bbb4e733c972a24, type: 3}
+  group: {fileID: -4746325674826330145, guid: 7bcbc8fa5798a4e4c92db85b918933d5, type: 2}
   volume: 1
   spatial: 0
 --- !u!114 &6618184314600204649
@@ -248,5 +249,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b770b81db4007fc4bbd6ac9865ce6760, type: 3}
   - {fileID: 8300000, guid: 61a970465704a55458b3de70d9284a92, type: 3}
   - {fileID: 8300000, guid: 55ce17046bad43340b83072f72790d8f, type: 3}
+  group: {fileID: -4746325674826330145, guid: 7bcbc8fa5798a4e4c92db85b918933d5, type: 2}
   volume: 1
   spatial: 0

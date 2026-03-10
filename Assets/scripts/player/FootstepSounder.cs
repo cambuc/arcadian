@@ -53,6 +53,6 @@ public class FootstepSounder : MonoBehaviour
 
     void OnLanded()
     {
-        new UniversalPlayer(landSound);
+        new UniversalPlayer(landSound, MixerGroupHolder.runtime.sfx);
     }
 }

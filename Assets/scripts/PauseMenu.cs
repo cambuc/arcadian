@@ -10,7 +10,9 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject root;
 
+    public GameObject buttonsRoot;
     public Button btnContinue;
+    public Button btnSettings;
     public Button btnQuit;
 
     float inputTimer;
@@ -28,6 +30,11 @@ public class PauseMenu : MonoBehaviour
         {
             Unpause();
         });
+        btnSettings.onClick.AddListener(() =>
+        {
+            SettingsMenu.runtime.Open();
+            buttonsRoot.SetActive(false);
+        });
         btnQuit.onClick.AddListener(() =>
         {
             Fader.runtime.FadeOut(() =>
@@ -39,7 +46,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        inputTimer -= Time.deltaTime;
+        inputTimer -= Time.unscaledDeltaTime;
 
         if (Input.GetKeyDown(KeyCode.Escape) && inputTimer <= 0 && !PlayerMovement.IsMovementLocked() && !BuildingMenu.runtime.root.activeSelf)
         {
@@ -51,6 +58,9 @@ public class PauseMenu : MonoBehaviour
             inputTimer = 0.25f;
             Unpause();
         }
+
+        if(!buttonsRoot.activeSelf && !SettingsMenu.runtime.root.activeSelf)
+            buttonsRoot.SetActive(true);
     }
 
     public void Pause()

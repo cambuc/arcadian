@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 
 public class SoundPlayer : MonoBehaviour
 {
     public List<AudioClip> clips;
+    public AudioMixerGroup group;
     public float volume = 1;
     [Range(0,1)]
     public float spatial;
@@ -27,6 +29,6 @@ public class SoundPlayer : MonoBehaviour
         {
             if (c != clip || clips.Count <= 1) pool.Add(c);
         }
-        new UniversalPlayer(clip, volume, spatial, transform.position);
+        new UniversalPlayer(clip, volume, spatial, transform.position, group);
     }
 }

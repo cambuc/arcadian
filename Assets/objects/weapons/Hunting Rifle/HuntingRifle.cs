@@ -192,8 +192,8 @@ public class HuntingRifle : Equippable
         bullet.transform.parent = null;
         bullet.Shoot();
 
-        new UniversalPlayer(fireSound, firingEcho);
-        new UniversalPlayer(ringingSound);
+        new UniversalPlayer(fireSound, firingEcho, MixerGroupHolder.runtime.sfx);
+        new UniversalPlayer(ringingSound, MixerGroupHolder.runtime.sfx);
 
         chamberedCartridgeObject.SetActive(false);
         chamberedCasingObject.SetActive(true);
@@ -210,7 +210,7 @@ public class HuntingRifle : Equippable
         while (magazine.count < magazineCapacity && PlayerInventory.runtime.HasItem(cartridgeItem))
         {
             anim.Play("ReloadSingle");
-            new UniversalPlayer(loadSounds[Random.Range(0, loadSounds.Count)]);
+            new UniversalPlayer(loadSounds[Random.Range(0, loadSounds.Count)], MixerGroupHolder.runtime.sfx);
             await magazine.AnimateAddCartridge(reloadSingleTime);
             PlayerInventory.runtime.RemoveItem(cartridgeItem);
         }

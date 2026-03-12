@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class PlayerInteract : MonoBehaviour
     public Camera playerCam;
 
     public GameObject interactionIndicator;
-
+    public TextMeshProUGUI lblExtra;
     public Slider interactSlider;
 
     public float interactRadius;
@@ -59,6 +60,8 @@ public class PlayerInteract : MonoBehaviour
             {
                 OnEnterZone(inst);
             }
+
+            lblExtra.text = inst.extraText;
 
             if (InteractOptionsMenu.runtime.GetSelectedOption().types.interactTime > 0)
             {
@@ -119,13 +122,11 @@ public class PlayerInteract : MonoBehaviour
         interactionIndicator.SetActive(false);
         InteractOptionsMenu.runtime.CloseOptions();
         interactSlider.gameObject.SetActive(false);
+        lblExtra.text = "";
     }
     public void OnExitZone(UnityAction onExit)
     {
-        currentInst = null;
-        interactionIndicator.SetActive(false);
-        InteractOptionsMenu.runtime.CloseOptions();
-        interactSlider.gameObject.SetActive(false);
+        OnExitZone();
         onExit();
     }
 

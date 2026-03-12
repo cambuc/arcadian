@@ -37,6 +37,7 @@ public class PlayerInventoryUI : MonoBehaviour
     public TextMeshProUGUI txtItemName;
     public TextMeshProUGUI lblItemWeight;
     public TextMeshProUGUI lblItemSlots;
+    public TextMeshProUGUI lblItemCondition;
 
     [Header("Apparel Slots")]
     public GameObject apparelRoot;
@@ -91,6 +92,7 @@ public class PlayerInventoryUI : MonoBehaviour
         txtItemName.text = "";
         lblItemWeight.text = "";
         lblItemSlots.text = "";
+        lblItemCondition.text = "";
 
         btnWear.gameObject.SetActive(false);
         btnRemove.gameObject.SetActive(false);
@@ -185,7 +187,7 @@ public class PlayerInventoryUI : MonoBehaviour
         List<PlayerInventoryUIItem> uiItems = new List<PlayerInventoryUIItem>();
         foreach (Item item in PlayerInventory.runtime.GetItems())
         {
-            if (!includes.Contains(item))
+            if (!includes.Find(i => i.itemName == item.itemName))
                 continue;
 
             GameObject instance = Instantiate(prefab.gameObject, itemsLayoutRoot.transform);
@@ -215,6 +217,7 @@ public class PlayerInventoryUI : MonoBehaviour
         txtItemName.text = "";
         lblItemWeight.text = "";
         lblItemSlots.text = "";
+        lblItemCondition.text = "";
 
         btnWear.gameObject.SetActive(false);
         btnWear.onClick.RemoveAllListeners();
@@ -240,6 +243,7 @@ public class PlayerInventoryUI : MonoBehaviour
         txtItemName.text = $"{uiItem.item.itemName}";
         lblItemWeight.text = $"{uiItem.item.weight} lbs";
         lblItemSlots.text = $"{uiItem.item.dimensions.x}x{uiItem.item.dimensions.y}";
+        if(uiItem.item.hasCondition) lblItemCondition.text = $"{(int)(uiItem.item.condition * 100)}%";
 
         btnDrop.gameObject.SetActive(true);
         btnDrop.onClick.AddListener(() => DropItem(uiItem));

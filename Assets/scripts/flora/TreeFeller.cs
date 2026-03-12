@@ -22,7 +22,10 @@ public class TreeFeller : MonoBehaviour
         if (implement == null)
             return;
 
-        new UniversalPlayer(implement.GetComponent<Tool>().useSound, MixerGroupHolder.runtime.sfx);
+        Tool tool = (Tool)implement;
+        new UniversalPlayer(tool.useSound, MixerGroupHolder.runtime.sfx);
+        tool.LoseCondition();
+
         Fader.runtime.FadeOut(() =>
         {
             GameObject felled = Instantiate(felledVersion);

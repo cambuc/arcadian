@@ -50,3 +50,5 @@ MonoBehaviour:
   equippable: {fileID: 0}
   weight: 10
   dimensions: {x: 4, y: 1}
+  condition: 1
+  hasCondition: 1

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6350661553656985487}
-  - component: {fileID: 8061688693916207224}
+  - component: {fileID: -6022465726755726609}
   m_Layer: 0
-  m_Name: Item_Bow
+  m_Name: Item_RabbitMeatDried
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8061688693916207224
+--- !u!114 &-6022465726755726609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2755455241443100281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7014411d26a6a9946b6cdc6dd43b3f4f, type: 3}
+  m_Script: {fileID: 11500000, guid: edafc18e209e27c4da677bcfb751a33f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: Bow
-  icon: {fileID: 2800000, guid: 25157e98c24504c4c873e81c2ea2e9e3, type: 3}
-  worldObject: {fileID: 419827296038036522, guid: 1e580e961c0cf0344b30433ad2613d16, type: 3}
-  equippable: {fileID: 4525551744632240722, guid: efd278bedc9328a46861db8650418ff3, type: 3}
-  weight: 5
-  dimensions: {x: 1, y: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::Consumable
+  itemName: Cooked Rabbit
+  icon: {fileID: 2800000, guid: e758868cf23a9804bab24547a7f59721, type: 3}
+  worldObject: {fileID: 5327145073655115276, guid: 85a993834c43b6c40b1d1d4173d97f3d, type: 3}
+  equippable: {fileID: 0}
+  weight: 0.5
+  dimensions: {x: 1, y: 1}
+  condition: 1
+  hasCondition: 0
+  sustenance: 0.3
+  hoursTillRotten: 24

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 
@@ -12,6 +13,11 @@ public class SurvivalAttributes : MonoBehaviour
     public float fatigue { get; private set; }
 
     [Header("UI Elements")]
+    public float showIndicatorThreshold;
+    public GameObject tempIndicator;
+    public GameObject thirstIndicator;
+    public GameObject hungerIndicator;
+    public GameObject fatigueIndicator;
     public ValueBar tempBar;
     public ValueBar thirstBar;
     public ValueBar hungerBar;
@@ -21,13 +27,13 @@ public class SurvivalAttributes : MonoBehaviour
     //public TextMeshProUGUI txtHungerGain;
     //public TextMeshProUGUI txtFatigueGain;
 
-    [Header("Gain Rates (Hours Until Maxed Without Activity)")]
+    [Header("Gain Rates")]
     public Vector2 charCountThresholds;
-    public int drainCallLoopSeconds;
     public float multDrainTemperature;
-    public float baseGainRateThirst;
-    public float baseGainRateHunger;
-    public float baseGainRateFatigue;
+    public float multRecoverTemperature;
+    public float thirstHoursToMax;
+    public float hungerHoursToMax;
+    public float fatigueHoursToMax;
 
     public Dictionary<string, float> addersTemperature = new Dictionary<string, float>();
     public Dictionary<string, float> multipliersThirst = new Dictionary<string, float>();
@@ -42,29 +48,44 @@ public class SurvivalAttributes : MonoBehaviour
     private void Start()
     {
         UpdateUI();
-        TimeManager.runtime.WaitToCallLoop(new WaitCallLoop() { action = Drain, loopDuration = drainCallLoopSeconds });
+        TimeManager.timePassed.AddListener(Drain);
     }
 
-    void Drain()
+    void Drain(float timePassed)
     {
         //Debug.Log($"{TimeManager.runtime.currentDateTime.ToLongTimeString()} | {thirst}");
-        AddTemperature(GetDrainTemperature());
-        AddThirst((drainCallLoopSeconds / (baseGainRateThirst * 3600)) * GetMultThirst());
-        AddHunger((drainCallLoopSeconds / (baseGainRateHunger * 3600)) * GetMultHunger());
-        AddFatigue((drainCallLoopSeconds / (baseGainRateFatigue * 3600)) * GetMultFatigue());
+        AddTemperature(GetDrainTemperature() * timePassed);
+        AddThirst((timePassed / (thirstHoursToMax * 3600)) * GetMultThirst());
+        AddHunger((timePassed / (hungerHoursToMax * 3600)) * GetMultHunger());
+        AddFatigue((timePassed / (fatigueHoursToMax * 3600)) * GetMultFatigue());
 
-        if (thirst >= 1) DeathScreen.runtime.ShowDeathScreen("You succumbed to dehydration");
-        if (hunger >= 1) DeathScreen.runtime.ShowDeathScreen("You succumbed to starvation");
+        if (thirst >= 1 && DeathScreen.runtime) DeathScreen.runtime.ShowDeathScreen("You succumbed to dehydration");
+        if (hunger >= 1 && DeathScreen.runtime) DeathScreen.runtime.ShowDeathScreen("You succumbed to starvation");
     }
 
     private void Update()
     {
         UpdateUI();
+
+        if (PlayerHud.runtime.wheelRoot.activeSelf)
+        {
+            tempIndicator.SetActive(true);
+            thirstIndicator.SetActive(true);
+            hungerIndicator.SetActive(true);
+            fatigueIndicator.SetActive(true);
+        }
+        else
+        {
+            tempIndicator.SetActive(Mathf.Abs(temperature) >= showIndicatorThreshold);
+            thirstIndicator.SetActive(thirst >= showIndicatorThreshold);
+            hungerIndicator.SetActive(hunger >= showIndicatorThreshold);
+            fatigueIndicator.SetActive(fatigue >= showIndicatorThreshold);
+        }
     }
 
     private void UpdateUI()
     {
-        tempBar.Value = (temperature + 1) / 2f;
+        tempBar.Value = 1 - Mathf.Abs(temperature);
         thirstBar.Value = 1 - thirst;
         hungerBar.Value = 1 - hunger;
         fatigueBar.Value = 1 - fatigue;
@@ -92,13 +113,18 @@ public class SurvivalAttributes : MonoBehaviour
         fatigue = Mathf.Clamp01(fatigue + amount);
     }
 
+    float tempConstant = 1f / 100000f;
     public float GetDrainTemperature()
     {
-        int amb = TemperatureManager.runtime.ambientTemperature;
-        int low = PlayerApparel.runtime.idealTemperatureRange.x;
-        int high = PlayerApparel.runtime.idealTemperatureRange.y;
+        float amb = TemperatureManager.runtime.FindApparentTemp();
+        float low = PlayerApparel.runtime.idealTemperatureRange.x;
+        float high = PlayerApparel.runtime.idealTemperatureRange.y;
+        float ideal = (low + high) / 2f;
 
-        float adder = (amb > high ? amb - high : amb < low ? amb - low : 0) * multDrainTemperature;
+        float adder = (amb > high ? amb - high : amb < low ? amb - low : 0) * (multDrainTemperature * tempConstant);
+        if (adder == 0) adder = -Ceiling(temperature) * (multRecoverTemperature * tempConstant);
+        if ((temperature > 0 && amb < low) || temperature < 0 && amb > high)
+            adder *= multRecoverTemperature;
 
         foreach (float add in addersTemperature.Values)
         {
@@ -106,6 +132,15 @@ public class SurvivalAttributes : MonoBehaviour
         }
         return adder;
     }
+    int Ceiling(float num)
+    {
+        if(num < 0)
+        {
+            return -Mathf.CeilToInt(-num);
+        }
+        return Mathf.CeilToInt(num);
+    }
+
     public float GetMultThirst()
     {
         float gainMult = 1;

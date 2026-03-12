@@ -13,15 +13,26 @@ public class Item : MonoBehaviour
     public Equippable equippable;
     public float weight;
     public Vector2Int dimensions = Vector2Int.one;
+    public float condition = 1;
+    public bool hasCondition;
 
     public void NewId()
     {
         id = Guid.NewGuid();
     }
 
+    public virtual void OnAdd()
+    {
+
+    }
+
     public int Volume()
     {
         return dimensions.x * dimensions.y;
+    }
+    public float SortingVolume()
+    {
+        return dimensions.x * dimensions.y + (dimensions.y > dimensions.x ? 0.5f : 0);
     }
 
     public virtual void Drop()

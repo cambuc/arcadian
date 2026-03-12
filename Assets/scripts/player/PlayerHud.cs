@@ -16,6 +16,7 @@ public class PlayerHud : MonoBehaviour
     public GameObject crouchIndicator;
 
     public GameObject wheelRoot;
+    public List<PlayerWheelOption> options = new List<PlayerWheelOption>();
 
     public SoundPlayer wheelSelectSound;
 
@@ -62,7 +63,7 @@ public class PlayerHud : MonoBehaviour
                 }
             }
 
-            foreach(PlayerWheelOption option in FindObjectsByType<PlayerWheelOption>(FindObjectsSortMode.None))
+            foreach(PlayerWheelOption option in options)
             {
                 if (option == selection)
                     option.Select();

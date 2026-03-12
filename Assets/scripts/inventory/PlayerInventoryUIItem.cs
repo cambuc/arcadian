@@ -11,12 +11,14 @@ public class PlayerInventoryUIItem : MonoBehaviour
     public Button button;
     public RawImage icon;
     public TextMeshProUGUI txtName;
+    public Slider condition;
 
     public void Initiate()
     {
         item = null;
         txtName.text = "";
         icon.enabled = false;
+        condition.gameObject.SetActive(false);
     }
     public void Initiate(Item item)
     {
@@ -24,6 +26,8 @@ public class PlayerInventoryUIItem : MonoBehaviour
         txtName.text = item.itemName;
         icon.enabled = item.icon;
         icon.texture = item.icon;
+        condition.gameObject.SetActive(item.hasCondition);
+        condition.value = item.condition;
 
         if (item as Clothing && PlayerApparel.runtime.isWearing(item as Clothing)) return;
 

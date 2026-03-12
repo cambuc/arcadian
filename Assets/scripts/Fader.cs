@@ -24,10 +24,15 @@ public class Fader : MonoBehaviour
         if (!fadeAudio) AudioListener.volume = 1;
     }
 
+    int state = 0;
     public async Task FadeOut(float time)
     {
+        state = 1;
         for(float i = 0; i < time; i += 0.025f)
         {
+            if (state != 1 || !Application.isPlaying)
+                return;
+
             fader.color = new Color(fader.color.r, fader.color.g, fader.color.b, Mathf.Lerp(0, 1, i / time));
             if (fadeAudio)
                 AudioListener.volume = 1 - (i / time);
@@ -36,8 +41,12 @@ public class Fader : MonoBehaviour
     }
     public async Task FadeIn(float time)
     {
+        state = 2;
         for (float i = 0; i < time; i += 0.025f)
         {
+            if (state != 2 || !Application.isPlaying)
+                return;
+
             fader.color = new Color(fader.color.r, fader.color.g, fader.color.b, Mathf.Lerp(1, 0, i / time));
             if (fadeAudio)
                 AudioListener.volume = (i / time);

@@ -74,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Campfire
   interactable: 1
   interactName: Campfire
+  extraText: 
   item: {fileID: 0}
   interactOptions:
   - text: Cook
@@ -88,6 +89,8 @@ MonoBehaviour:
   - {fileID: 520550145331514291, guid: f652796fd859a104b9eabd7f3c97288a, type: 3}
   - {fileID: 520550145331514291, guid: 784fe1d19bcd41941a4d19513af30855, type: 3}
   - {fileID: 520550145331514291, guid: ec83d516df3be1049b2a5582ca165361, type: 3}
+  - {fileID: 520550145331514291, guid: 96c4cb8b75db92b43ae5bf2fa0b85ff3, type: 3}
+  - {fileID: 520550145331514291, guid: cf5dd03c1e03e6b4d903d6818d51c26e, type: 3}
   flames: {fileID: 2625332206349723180}
   secondsToStartFire: 60
   fireStarting:
@@ -99,8 +102,8 @@ MonoBehaviour:
   - {fileID: -853179339854352053, guid: 4538a33d67a7924449168b05ae1644be, type: 3}
   - {fileID: -7433702141582746586, guid: 950c05a83529c3b44ae8cddc8a119dd6, type: 3}
   - {fileID: -853179339854352053, guid: e258eaa03c92cde4cad6ac0a26aa0e3f, type: 3}
-  baseFireTime: 250
-  fuelAddTime: 100
+  baseFireTimeScnds: 1800
+  fuelAddTime: 600
   interactSound: {fileID: -6496920113129478229}
   addFuelSound: {fileID: -363105371711436667}
 --- !u!114 &-6496920113129478229
@@ -316,6 +319,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fc81d9b8ca924147bcfa05ca34c7f3c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8742067494809985277}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fc81d9b8ca924147bcfa05ca34c7f3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2038184399183139572}
   m_SourcePrefab: {fileID: 100100000, guid: 8fc81d9b8ca924147bcfa05ca34c7f3c, type: 3}
 --- !u!1 &2625332206349723180 stripped
 GameObject:
@@ -419,6 +425,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2038184399183139572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2625332206349723180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683a0fe57aada3d42a57378f6d5b5899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TemperatureZone
+  radius: 5
+  falloff: 1
+  temperatureModifier: 30
 --- !u!4 &3397083113865510038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8fc81d9b8ca924147bcfa05ca34c7f3c, type: 3}

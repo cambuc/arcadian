@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -155,19 +156,21 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        items.Add(item);
+        Item newItem = item.Clone();
+        newItem.NewId();
+        items.Add(newItem);
 
         if (FilledSlots() > slots)
         {
-            items.Find(i => i.itemName == item.itemName).Drop();
+            items.Find(i => i.itemName == newItem.itemName).Drop();
             ShowFullInventoryMessage();
         }
-        if (item.GetComponent<FirearmItem>())
+        if (newItem.GetComponent<FirearmItem>())
         {
-            item.GetComponent<FirearmItem>().loadedCount = 0;
-            item.GetComponent<FirearmItem>().chambered = false;
+            newItem.GetComponent<FirearmItem>().loadedCount = 0;
+            newItem.GetComponent<FirearmItem>().chambered = false;
         }
-
+        newItem.OnAdd();
         onInventoryChanged.Invoke();
     }
     async void ShowFullInventoryMessage()
@@ -180,6 +183,13 @@ public class PlayerInventory : MonoBehaviour
     public void RemoveItem(Item item)
     {
         Item toRemove = items.Find(i => i.itemName == item.itemName);
+        if (toRemove)
+            items.Remove(toRemove);
+        onInventoryChanged.Invoke();
+    }
+    public void RemoveItem(Guid id)
+    {
+        Item toRemove = items.Find(i => i.id == id);
         if (toRemove)
             items.Remove(toRemove);
         onInventoryChanged.Invoke();

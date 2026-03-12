@@ -3,25 +3,32 @@ using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
 {
+    public static DayNightCycle runtime;
+
     public Light sun;
 
-    public float maxSunXRotation;
     public float maxSunYRotation;
+    public float maxSunXRotation = 50f;
 
     public float sunBaseIntensity;
-    public float sunIntensityAmplitude;
 
     public Color sunLowColor;
     public Color sunHighColor;
 
+    [Header("Seasonal")]
+    public float summerSunIntensity;
+    public float winterSunIntensity;
+
+    [Header("Fog")]
     public Color fogDayColor;
     public Color fogDawnColor;
     public Color fogNightColor;
-    public Vector2 dayTimeRange;
-    public float dayTimeColorWeight = 3;
+    public float angleThreshold;
 
     private void Awake()
     {
+        runtime = this;
+
         GameTick.tick.AddListener(AdjustPositions);
     }
 
@@ -35,12 +42,17 @@ public class DayNightCycle : MonoBehaviour
         sun.intensity = GetSunIntensity(t);
         sun.color = GetSunColor(t);
 
-        RenderSettings.fogColor = GetFogColor(t);
+        RenderSettings.fogColor = GetFogColor(sun.transform.eulerAngles.x);
     }
 
-    float GetSunXRotation(float hour)
+    public float GetSunXRotation(float hour)
     {
-        return -Mathf.Cos((Mathf.PI * hour) / 12) * maxSunXRotation;
+        float offset;
+        if (TimeManager.currentSeason == 4) offset = -23.5f;
+        else if (TimeManager.currentSeason == 2) offset = 23.5f;
+        else offset = 0;
+
+        return (-Mathf.Cos((Mathf.PI * hour) / 12) * maxSunXRotation) + offset;
     }
     float GetSunYRotation(float hour)
     {
@@ -48,35 +60,29 @@ public class DayNightCycle : MonoBehaviour
     }
     float GetSunIntensity(float hour)
     {
-        return sunIntensityAmplitude * - Mathf.Cos((Mathf.PI * hour) / 12) + sunBaseIntensity;
+        float amp;
+        if (TimeManager.currentSeason == 4) amp = winterSunIntensity;
+        else if (TimeManager.currentSeason == 2) amp = summerSunIntensity;
+        else amp = (summerSunIntensity + winterSunIntensity) / 2f;
+
+        return amp * - Mathf.Cos((Mathf.PI * hour) / 12) + sunBaseIntensity;
     }
     Color GetSunColor(float hour)
     {
         return Color.Lerp(sunLowColor, sunHighColor, -Mathf.Cos((Mathf.PI * hour) / 12));
     }
 
-    Color GetFogColor(float hour)
+    Color GetFogColor(float angle)
     {
-        if(hour >= dayTimeRange.x && hour < dayTimeRange.y)
+        while (angle >= 180) angle -= 360;
+
+        if(angle >= 0)
         {
-            float range = dayTimeRange.y - dayTimeRange.x;
-            float midday = dayTimeRange.x + (range / 2f);
-
-            float t = Mathf.Abs(hour - midday) / (range / 2f);
-            t = Mathf.Pow(t, dayTimeColorWeight);
-
-            return Color.Lerp(fogDayColor, fogDawnColor, t);
+            return Color.Lerp(fogDawnColor, fogDayColor, angle / angleThreshold);
         }
         else
         {
-            float range = 24 - (dayTimeRange.y - dayTimeRange.x);
-            float midnight = (dayTimeRange.y + (range / 2f));
-            float h = hour < dayTimeRange.x ? hour + 24 : hour;
-
-            float t = Mathf.Abs(h - midnight) / (range / 2f);
-            t = Mathf.Pow(t, dayTimeColorWeight);
-
-            return Color.Lerp(fogNightColor, fogDawnColor, t);
+            return Color.Lerp(fogDawnColor, fogNightColor, Mathf.Abs(angle / angleThreshold));
         }
     }
 }

@@ -9,7 +9,7 @@ public class ItemsLayout : MonoBehaviour
 
     public void AdjustLayout(List<PlayerInventoryUIItem> items)
     {
-        items = items.OrderByDescending(r => r.item.Volume()).ToList();
+        items = items.OrderByDescending(r => r.item.SortingVolume()).ToList();
         PlayerInventoryUIItem[,] grid = FillGrid(items);
 
         List<PlayerInventoryUIItem> assigned = new List<PlayerInventoryUIItem>();

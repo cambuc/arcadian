@@ -8,6 +8,7 @@ public class CraftingRecipe : MonoBehaviour
     public float timeInHours;
     public List<ItemQuantity> components = new List<ItemQuantity>();
     public List<ToolType> toolTypes = new List<ToolType>();
+    public bool craftInWorld;
 
     public float timeCrafted { get; set; }
 

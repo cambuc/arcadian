@@ -102,7 +102,7 @@ public class CraftingMenu : MonoBehaviour
 
     void SelectRecipe(CraftingRecipeUI rui)
     {
-        if (passingTime || rui == null)
+        if (rui == null)
             return;
 
         selectSound.PlaySound();

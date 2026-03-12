@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
     public bool interactable = true;
 
     public string interactName;
-
+    public string extraText;
     public Item item;
 
     public List<InteractOption> interactOptions = new List<InteractOption>();

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaterSource : Interactable
@@ -10,6 +11,33 @@ public class WaterSource : Interactable
 
     public SoundPlayer waterPlayer;
     public SoundPlayer stonePlayer;
+
+    public Material frozenMaterial;
+    public Material plainMaterial;
+    public bool freezeInWinter;
+
+
+    private void Awake()
+    {
+        if(freezeInWinter)
+            TimeManager.seasonChanged.AddListener(OnSeasonChange);
+    }
+
+    void OnSeasonChange()
+    {
+        if(TimeManager.currentSeason == 4)
+        {
+            GetComponent<Collider>().isTrigger = false;
+            interactable = false;
+            GetComponent<Renderer>().material = frozenMaterial;
+        }
+        else
+        {
+            GetComponent<Collider>().isTrigger = true;
+            interactable = true;
+            GetComponent<Renderer>().material = plainMaterial;
+        }
+    }
 
     public override void SetInteractOptions()
     {

@@ -10,9 +10,9 @@ public class Campfire : CraftingStation
     public List<Item> fireStarting = new List<Item>();
     public List<Item> firewood = new List<Item>();
 
-    public int baseFireTime;
-    public int fuelAddTime;
-    int fireTime;
+    public float baseFireTimeScnds;
+    public float fuelAddTime;
+    float fireTime;
 
     public SoundPlayer interactSound;
     public SoundPlayer addFuelSound;
@@ -20,7 +20,7 @@ public class Campfire : CraftingStation
     private void Awake()
     {
         GameTick.tick.AddListener(Tick);
-        TimeManager.runtime.WaitToCallLoop(new WaitCallLoop() { action=() => fireTime--, loopDuration = TimeManager.runtime.timeMult, secondsLeft = 1});
+        TimeManager.timePassed.AddListener((float timePassed) => { fireTime -= timePassed; });
     }
 
     private void OnEnable()
@@ -66,7 +66,8 @@ public class Campfire : CraftingStation
             return;
         }
 
-        Tool tool = implement.GetComponent<Tool>();
+        Tool tool = (Tool)implement;
+        tool.LoseCondition();
         if (tool.useSound) new UniversalPlayer(tool.useSound, MixerGroupHolder.runtime.sfx);
 
         Fader.runtime.FadeOut(() =>
@@ -74,7 +75,7 @@ public class Campfire : CraftingStation
             flames.SetActive(true);
 
             TimeManager.runtime.PassTime(secondsToStartFire * tool.timeMultiplier);
-            fireTime = baseFireTime;
+            fireTime = baseFireTimeScnds;
 
             interactOptions.Clear();
             interactOptions.Add(new InteractOption() { text = "Craft" });
@@ -104,13 +105,20 @@ public class Campfire : CraftingStation
     {
         if(fireTime <= 0)
         {
+            extraText = "";
             Extinguish();
         }
         else
         {
+            float minutes = fireTime / 60f;
+
+            string hours = "";
+            if (minutes >= 60) hours = $"{(int)(minutes / 60f)} hr ";
+            extraText = hours + $"{(int)(minutes % 60f)} min";
+
             flames.transform.localScale = new Vector3(
                 flames.transform.localScale.x,
-                Mathf.Lerp(0, 1, (float)fireTime / baseFireTime),
+                Mathf.Lerp(0, 1, (float)fireTime / baseFireTimeScnds),
                 flames.transform.localScale.z
                 );
         }

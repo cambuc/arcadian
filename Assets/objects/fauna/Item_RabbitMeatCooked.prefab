@@ -48,6 +48,9 @@ MonoBehaviour:
   icon: {fileID: 2800000, guid: e758868cf23a9804bab24547a7f59721, type: 3}
   worldObject: {fileID: 5327145073655115276, guid: 85a993834c43b6c40b1d1d4173d97f3d, type: 3}
   equippable: {fileID: 0}
-  weight: 2
+  weight: 1
   dimensions: {x: 1, y: 1}
-  sustenance: 15
+  condition: 1
+  hasCondition: 1
+  sustenance: 0.35
+  hoursTillRotten: 24

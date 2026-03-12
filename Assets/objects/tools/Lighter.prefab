@@ -50,5 +50,8 @@ MonoBehaviour:
   equippable: {fileID: 0}
   weight: 0.1
   dimensions: {x: 1, y: 1}
+  condition: 1
+  hasCondition: 1
   timeMultiplier: 0.5
+  useConditionLoss: 0.025
   useSound: {fileID: 8300000, guid: c590e90bff7c5e246b537da2c63ad762, type: 3}

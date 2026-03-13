@@ -427,9 +427,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   interactName: Arrow
+  extraText: 
   item: {fileID: 8061688693916207224, guid: 9978b92fe52765a4f90b061dc1f15e3e, type: 3}
   interactOptions:
-  - text: Store
+  - text: Pick Up
     interactTime: 0
     saveTime: 0
     itemQuantity:
@@ -521,6 +522,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: de3bbae4d9ad6ac4a8e64f46e75f7092, type: 3}
   - {fileID: 8300000, guid: 27dc7215b37181547895d4e0957b8a17, type: 3}
   - {fileID: 8300000, guid: 4888a1d404e36bf4ca9c3d329b515d11, type: 3}
+  group: {fileID: 0}
   volume: 1
   spatial: 1
 --- !u!114 &-6457713748359186508
@@ -539,6 +541,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7fb92b2e64ddc1c498dc1b0758355628, type: 3}
   - {fileID: 8300000, guid: 4a8db7a8428ac5d4f88e2e0ff4c208cd, type: 3}
   - {fileID: 8300000, guid: faa4db677a8c1f3439689ab2da18e174, type: 3}
+  group: {fileID: 0}
   volume: 1
   spatial: 0
 --- !u!1 &2505588707948927422

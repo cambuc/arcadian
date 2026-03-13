@@ -163,6 +163,46 @@ public class PlayerInventoryUI : MonoBehaviour
         if (PlayerInventory.runtime.GetItems().Count > 0) itemsLayoutRoot.AdjustLayout(uiItems);
     }
 
+    //Inventory Selection--------------------------------------
+    public void OpenSelectionInventory(UnityAction<Item> onSelect)
+    {
+        onClose.AddListener(onSelect);
+
+        PlayerMovement.LockMovement(gameObject, true);
+
+        apparelRoot.SetActive(false);
+        contextRoot.SetActive(false);
+
+        FillLayoutSelection();
+        root.SetActive(true);
+    }
+    void FillLayoutSelection()
+    {
+        ClearTemp();
+
+        lblWeight.text = "";
+        lblSlots.text = "";
+
+        missingItemsIndicator.SetActive(false);
+        List<PlayerInventoryUIItem> uiItems = new List<PlayerInventoryUIItem>();
+        foreach (Item item in PlayerInventory.runtime.GetItems())
+        {
+            GameObject instance = Instantiate(prefab.gameObject, itemsLayoutRoot.transform);
+            temp.Add(instance);
+
+            PlayerInventoryUIItem uiItem = instance.GetComponent<PlayerInventoryUIItem>();
+            uiItems.Add(uiItem);
+            uiItem.Initiate(item);
+            uiItem.button.onClick.AddListener(() => {
+                clickSound.PlaySound();
+                current = uiItem;
+                CloseInventory();
+            });
+        }
+        if (PlayerInventory.runtime.GetItems().Count > 0) itemsLayoutRoot.AdjustLayout(uiItems);
+    }
+
+    //Filtered Inventory Selection--------------------------------------
     public void OpenFilteredInventory(List<Item> includes, UnityAction<Item> onSelect)
     {
         onClose.AddListener(onSelect);
@@ -172,13 +212,12 @@ public class PlayerInventoryUI : MonoBehaviour
         apparelRoot.SetActive(false);
         contextRoot.SetActive(false);
 
-        FillLayout(includes);
+        FillLayoutSelection(includes);
         root.SetActive(true);
     }
-    void FillLayout(List<Item> includes)
+    void FillLayoutSelection(List<Item> includes)
     {
         ClearTemp();
-
 
         lblWeight.text = "";
         lblSlots.text = "";

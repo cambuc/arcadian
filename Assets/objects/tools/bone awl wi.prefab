@@ -111,6 +111,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e0ef1e9616c57914d950f86ef68950e2, type: 3}
   - {fileID: 8300000, guid: 9a13863c3f399014e8eb17d1ff433a97, type: 3}
   - {fileID: 8300000, guid: a29964f2002aecf45bc6e01c2b17cc27, type: 3}
+  group: {fileID: 0}
   volume: 1
   spatial: 0
 --- !u!65 &4695981079652004262
@@ -148,8 +149,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldItem
   interactable: 1
   interactName: Bone Awl
+  extraText: 
   item: {fileID: 3914879309224082409, guid: 5e787480df08faa44b69c454505f8236, type: 3}
-  interactOptions: []
+  interactOptions:
+  - text: Pick Up
+    interactTime: 0
+    saveTime: 0
+    itemQuantity:
+      item: {fileID: 0}
+      amount: 0
+  - text: Grab
+    interactTime: 0
+    saveTime: 0
+    itemQuantity:
+      item: {fileID: 0}
+      amount: 0
   withinZone: 0
   interacted: 0
   preventWorldFalling: 1

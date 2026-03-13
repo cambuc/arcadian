@@ -56,6 +56,7 @@ MonoBehaviour:
       m_Calls: []
   faunaName: Mule Deer
   harvestCarcassSound: {fileID: 8300000, guid: 75ceba40fa9f022458e6a2d7eff702a4, type: 3}
+  skinSack: {fileID: 2947868000134891828, guid: 8f1f7c159a734dd45bdef25c877ef7b3, type: 3}
   hearRadius: 50
   hearLoudRadius: 100
   stoppingDistance: 1

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edafc18e209e27c4da677bcfb751a33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Consumable
-  itemName: Cooked Venison
+  itemName: Dried Venison
   icon: {fileID: 2800000, guid: 4b39ec008c2842944a1f607197dee4c6, type: 3}
   worldObject: {fileID: 5327145073655115276, guid: 2fb09258936a9ce4c81f0ae669debd9f, type: 3}
   equippable: {fileID: 0}

@@ -111,6 +111,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e0ef1e9616c57914d950f86ef68950e2, type: 3}
   - {fileID: 8300000, guid: 9a13863c3f399014e8eb17d1ff433a97, type: 3}
   - {fileID: 8300000, guid: a29964f2002aecf45bc6e01c2b17cc27, type: 3}
+  group: {fileID: 0}
   volume: 1
   spatial: 0
 --- !u!54 &7925001940910791160
@@ -154,9 +155,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldItem
   interactable: 1
   interactName: Deer Brain
+  extraText: 
   item: {fileID: 8061688693916207224, guid: 7d7277351b940094a83103d7107b54c3, type: 3}
   interactOptions:
-  - text: Store
+  - text: Pick Up
     interactTime: 0
     saveTime: 0
     itemQuantity:

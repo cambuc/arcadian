@@ -3,7 +3,6 @@ using System.IO;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class TopographicMapper : MonoBehaviour
 {
@@ -25,8 +24,6 @@ public class TopographicMapper : MonoBehaviour
     public float steepColorMult;
 
     public int xericAlphaIndex;
-
-    public List<ResourceArea> resources = new List<ResourceArea>();
 
     [Header("Colors")]
     public Color waterColor;
@@ -81,17 +78,17 @@ public class TopographicMapper : MonoBehaviour
         }
 
         //Resource Icons
-        foreach(ResourceArea res in resources)
+        foreach(MapLocation loc in FindObjectsByType<MapLocation>(FindObjectsInactive.Exclude, FindObjectsSortMode.None))
         {
-            if (!res.mapIcon) continue;
+            if (!loc.mapIcon) continue;
 
-            Vector2Int center = WorldToMapPoint(res.transform.position);
-            Vector2Int anchor = new Vector2Int(center.x - res.mapIcon.width / 2, center.y - res.mapIcon.height / 2);
-            for(int x = anchor.x; x < anchor.x + res.mapIcon.width; x++)
+            Vector2Int center = WorldToMapPoint(loc.transform.position);
+            Vector2Int anchor = new Vector2Int(center.x - loc.mapIcon.width / 2, center.y - loc.mapIcon.height / 2);
+            for(int x = anchor.x; x < anchor.x + loc.mapIcon.width; x++)
             {
-                for (int y = anchor.y; y < anchor.y + res.mapIcon.height; y++)
+                for (int y = anchor.y; y < anchor.y + loc.mapIcon.height; y++)
                 {
-                    texture.SetPixel(x, y, res.mapIcon.GetPixel(x - anchor.x, y - anchor.y));
+                    texture.SetPixel(x, y, loc.mapIcon.GetPixel(x - anchor.x, y - anchor.y));
                 }
             }
 

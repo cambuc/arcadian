@@ -21,7 +21,7 @@ public class ForageItem : WorldItem
         if (GetType() != typeof(FlyingArrow))
             foreach (FlyingArrow arrow in GetComponentsInChildren<FlyingArrow>())
             {
-                arrow.Interact("Store");
+                arrow.Interact("Pick Up");
             }
         Destroy(gameObject);
     }

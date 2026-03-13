@@ -12,6 +12,7 @@ public class FaunaBehavior : Attackable
     public string faunaName;
 
     public AudioClip harvestCarcassSound;
+    public Container skinSack;
 
     public float hearRadius;
     public float hearLoudRadius;
@@ -55,6 +56,7 @@ public class FaunaBehavior : Attackable
 
     private void Start()
     {
+        OnHit(0);
         if (following) following.onDeath.AddListener(() => { following = null; });
     }
 

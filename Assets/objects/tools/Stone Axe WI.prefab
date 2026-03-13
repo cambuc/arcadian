@@ -234,6 +234,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e0ef1e9616c57914d950f86ef68950e2, type: 3}
   - {fileID: 8300000, guid: 9a13863c3f399014e8eb17d1ff433a97, type: 3}
   - {fileID: 8300000, guid: a29964f2002aecf45bc6e01c2b17cc27, type: 3}
+  group: {fileID: 0}
   volume: 1
   spatial: 0
 --- !u!114 &2544752180851562231
@@ -250,9 +251,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldItem
   interactable: 1
   interactName: Stone Axe
+  extraText: 
   item: {fileID: 3914879309224082409, guid: e1e82c2fc058dbc4db5552ac24332285, type: 3}
   interactOptions:
-  - text: Store
+  - text: Pick Up
     interactTime: 0
     saveTime: 0
     itemQuantity:

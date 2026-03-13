@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edafc18e209e27c4da677bcfb751a33f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Consumable
-  itemName: Cooked Rabbit
+  itemName: Dried Rabbit
   icon: {fileID: 2800000, guid: e758868cf23a9804bab24547a7f59721, type: 3}
   worldObject: {fileID: 5327145073655115276, guid: 85a993834c43b6c40b1d1d4173d97f3d, type: 3}
   equippable: {fileID: 0}

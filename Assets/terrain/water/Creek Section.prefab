@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4908450141783262421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8324238788827641195}
+  - component: {fileID: 1709851927771853002}
+  - component: {fileID: 4294193554709807740}
+  - component: {fileID: 1320651647658416845}
+  - component: {fileID: 5838731717896432686}
+  - component: {fileID: 1006025712039812303}
+  - component: {fileID: 8852584457904932160}
+  m_Layer: 6
+  m_Name: Creek Section
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8324238788827641195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908450141783262421}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000617944, y: 0.465429, z: -0.0003249508, w: 0.885085}
+  m_LocalPosition: {x: 152.59998, y: 569.15, z: 1074.1}
+  m_LocalScale: {x: 35, y: 35, z: 35}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0.08, y: 55.476, z: 0}
+--- !u!33 &1709851927771853002
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908450141783262421}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4294193554709807740
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908450141783262421}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 8922af690e534d3449827acb2ee7ce00, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1320651647658416845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908450141783262421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca355760d3c7ae4da50cfe5115db716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterSource
+  interactable: 1
+  interactName: Creek
+  extraText: 
+  item: {fileID: 0}
+  interactOptions: []
+  withinZone: 0
+  interacted: 0
+  drinkTime: 1
+  searchTime: 3
+  stoneItem: {fileID: 8061688693916207224, guid: 813354d852876824aa66b14502a157a3, type: 3}
+  waterPlayer: {fileID: 1006025712039812303}
+  stonePlayer: {fileID: 8852584457904932160}
+  frozenMaterial: {fileID: 2100000, guid: 98e7fbbc6fbed504ca0ff78750e47c49, type: 2}
+  plainMaterial: {fileID: 2100000, guid: 8922af690e534d3449827acb2ee7ce00, type: 2}
+  freezeInWinter: 1
+--- !u!65 &5838731717896432686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908450141783262421}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.000001, y: 0.0000000034924599, z: 10.000001}
+  m_Center: {x: -0.0000019073486, y: -0.00000032782555, z: 0.0000019073486}
+--- !u!114 &1006025712039812303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908450141783262421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695c88829236e014abfcafcb298a77df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundPlayer
+  clips:
+  - {fileID: 8300000, guid: ca307efd00dd39848b5d7ad3ccb9e14c, type: 3}
+  - {fileID: 8300000, guid: 7d7e1222b8838814fbb0413ec74d84de, type: 3}
+  - {fileID: 8300000, guid: 79ccf9600d452db409d78ea214a7e69a, type: 3}
+  - {fileID: 8300000, guid: 98c59d52859615c4d8c95616b25e2e0e, type: 3}
+  group: {fileID: -4746325674826330145, guid: 7bcbc8fa5798a4e4c92db85b918933d5, type: 2}
+  volume: 1
+  spatial: 0
+--- !u!114 &8852584457904932160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908450141783262421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695c88829236e014abfcafcb298a77df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundPlayer
+  clips:
+  - {fileID: 8300000, guid: da363c4b263f07341b58c4df44ea0a5d, type: 3}
+  - {fileID: 8300000, guid: c67d1d6340ceb854b88f8c14b4db039a, type: 3}
+  - {fileID: 8300000, guid: 7abb7b46e6ea6ac4484b54718728452a, type: 3}
+  group: {fileID: -4746325674826330145, guid: 7bcbc8fa5798a4e4c92db85b918933d5, type: 2}
+  volume: 1
+  spatial: 0

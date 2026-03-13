@@ -10,12 +10,6 @@ public class ResourceArea : MonoBehaviour
     public float radius;
     [Range(0, 1)]
     public float density;
-    [ReadOnly]
-    public int currentCount;
-
-    [Header("Map Properties")]
-    public Texture2D mapIcon;
-    public string mapName;
 
     [Header("Object Properties")]
     public List<GameObject> resourceVariants = new List<GameObject>();
@@ -70,7 +64,6 @@ public class ResourceArea : MonoBehaviour
                 }
             }
         }
-        currentCount = temp.Count;
     }
 
     void ClearTemp()

@@ -71,6 +71,10 @@ public class CraftingRecipe : MonoBehaviour
         }
         return lowest;
     }
+    public virtual void CraftInWorld(int amount, CraftingStation station)
+    {
+
+    }
 }
 [System.Serializable]
 public class ItemQuantity

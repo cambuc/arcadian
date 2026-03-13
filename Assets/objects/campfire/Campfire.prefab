@@ -86,11 +86,11 @@ MonoBehaviour:
   withinZone: 0
   interacted: 0
   recipes:
+  - {fileID: -7867636209164262338, guid: ec83d516df3be1049b2a5582ca165361, type: 3}
+  - {fileID: -6906687730329717387, guid: 784fe1d19bcd41941a4d19513af30855, type: 3}
+  - {fileID: 1742125267771926362, guid: 96c4cb8b75db92b43ae5bf2fa0b85ff3, type: 3}
+  - {fileID: -1997117744363243986, guid: cf5dd03c1e03e6b4d903d6818d51c26e, type: 3}
   - {fileID: 520550145331514291, guid: f652796fd859a104b9eabd7f3c97288a, type: 3}
-  - {fileID: 520550145331514291, guid: 784fe1d19bcd41941a4d19513af30855, type: 3}
-  - {fileID: 520550145331514291, guid: ec83d516df3be1049b2a5582ca165361, type: 3}
-  - {fileID: 520550145331514291, guid: 96c4cb8b75db92b43ae5bf2fa0b85ff3, type: 3}
-  - {fileID: 520550145331514291, guid: cf5dd03c1e03e6b4d903d6818d51c26e, type: 3}
   flames: {fileID: 2625332206349723180}
   secondsToStartFire: 60
   fireStarting:
@@ -106,6 +106,10 @@ MonoBehaviour:
   fuelAddTime: 600
   interactSound: {fileID: -6496920113129478229}
   addFuelSound: {fileID: -363105371711436667}
+  cookingMeatPrefab: {fileID: -8914165396711436351, guid: 63e89d5925ab0504c885ef061afbb9e7, type: 3}
+  distanceCooking: 1
+  distanceDrying: 1.5
+  spacing: 0.1
 --- !u!114 &-6496920113129478229
 MonoBehaviour:
   m_ObjectHideFlags: 0

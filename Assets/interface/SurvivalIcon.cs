@@ -59,7 +59,12 @@ public class SurvivalIcon : MonoBehaviour
     {
         float s = SurvivalAttributes.runtime.temperature;
 
-        if(lastTemp > s)
+
+        if (Mathf.Abs(s) < 0.02f)
+        {
+            fillColor.color = Color.white;
+        }
+        else if (lastTemp > s)
         {
             lastTemp = s;
             fillColor.color = cold;
@@ -68,10 +73,6 @@ public class SurvivalIcon : MonoBehaviour
         {
             lastTemp = s;
             fillColor.color = hot;
-        }
-        else
-        {
-            fillColor.color = Color.white;
         }
 
         if (s <= -0.25f) s = Mathf.Abs(s);

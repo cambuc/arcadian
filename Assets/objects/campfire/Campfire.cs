@@ -12,10 +12,16 @@ public class Campfire : CraftingStation
 
     public float baseFireTimeScnds;
     public float fuelAddTime;
-    float fireTime;
+    public float fireTime { get; private set; }
 
     public SoundPlayer interactSound;
     public SoundPlayer addFuelSound;
+
+    [Header("Cooking")]
+    public CookingProduct cookingMeatPrefab;
+    public float distanceCooking;
+    public float distanceDrying;
+    public float spacing;
 
     private void Awake()
     {
@@ -122,5 +128,22 @@ public class Campfire : CraftingStation
                 flames.transform.localScale.z
                 );
         }
+    }
+
+    public void PlaceMeatCooking(CookingRecipe recipe)
+    {
+        CookingProduct stick = Instantiate(cookingMeatPrefab.gameObject, transform).GetComponent<CookingProduct>();
+
+        stick.recipe = recipe;
+        stick.campfire = this;
+
+        float forward = Random.Range(0f, 1f);
+        float right = Mathf.Sqrt(1f - forward * forward);
+        Vector3 direction = new Vector3((Random.Range(0, 2) == 0 ? -1f : 1f) * right, 0, (Random.Range(0, 2) == 0 ? -1f : 1f) * forward);
+
+        stick.transform.position = transform.position + direction * (recipe.drying ? distanceDrying : distanceCooking);
+        stick.transform.LookAt(transform);
+
+        stick.SetInteractOptions();
     }
 }

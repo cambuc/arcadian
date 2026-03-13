@@ -55,7 +55,7 @@ public class Interactable : MonoBehaviour
 
     public void Open()
     {
-        ContainerUI.runtime.OpenContainer((Container)this);
+        //ContainerUI.runtime.OpenContainer((Container)this);
     }
 
     Transform parent;
@@ -105,5 +105,9 @@ public class Interactable : MonoBehaviour
                 rb.isKinematic = false;
             }
         }
+
+        OnUpdate();
     }
+
+    public virtual void OnUpdate() { }
 }

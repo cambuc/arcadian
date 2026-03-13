@@ -34,7 +34,6 @@ public class CraftingMenu : MonoBehaviour
 
     List<GameObject> tempRecipes = new List<GameObject>();
     List<GameObject> tempComps = new List<GameObject>();
-    List<GameObject> tempTool = new List<GameObject>();
 
     CraftingRecipeUI currentSelection;
     bool passingTime;
@@ -170,7 +169,10 @@ public class CraftingMenu : MonoBehaviour
 
         quantityCounter.onValueChange.AddListener(() =>
         {
-            btnCraft.GetComponentInChildren<TextMeshProUGUI>().text = $"Craft ({GetTime(rui.recipe, quantityCounter.value)} hrs)";
+            if(rui.recipe.craftInWorld)
+                btnCraft.GetComponentInChildren<TextMeshProUGUI>().text = $"Craft";
+            else
+                btnCraft.GetComponentInChildren<TextMeshProUGUI>().text = $"Craft ({GetTime(rui.recipe, quantityCounter.value)} hrs)";
         });
         quantityCounter.SetValue(1);
 
@@ -187,6 +189,18 @@ public class CraftingMenu : MonoBehaviour
     {
         if (passingTime)
             return;
+        if (recipe.craftInWorld)
+        {
+            foreach (ItemQuantity comp in recipe.components)
+            {
+                for (int i = 0; i < comp.amount * quantityCounter.value; i++)
+                    PlayerInventory.runtime.RemoveItemIncludeSurroundings(comp.item);
+
+            }
+            recipe.CraftInWorld((int)quantityCounter.value, currentStation);
+            CloseMenu();
+            return;
+        }
 
         passingTime = true;
         TimeManager.runtime.PassTime(GetTime(recipe, quantityCounter.value) * 60f * 60f);

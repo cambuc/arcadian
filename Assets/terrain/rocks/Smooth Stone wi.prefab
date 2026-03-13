@@ -130,9 +130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldItem
   interactable: 1
   interactName: Smooth Stone
+  extraText: 
   item: {fileID: 8061688693916207224, guid: 813354d852876824aa66b14502a157a3, type: 3}
   interactOptions:
-  - text: Store
+  - text: Pick Up
     interactTime: 0
     saveTime: 0
     itemQuantity:
@@ -164,6 +165,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da363c4b263f07341b58c4df44ea0a5d, type: 3}
   - {fileID: 8300000, guid: c67d1d6340ceb854b88f8c14b4db039a, type: 3}
   - {fileID: 8300000, guid: 7abb7b46e6ea6ac4484b54718728452a, type: 3}
+  group: {fileID: 0}
   volume: 1
   spatial: 0
 --- !u!54 &-8593952649433873931

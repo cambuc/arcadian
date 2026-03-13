@@ -34,7 +34,7 @@ public class WorldItem : Interactable
     public override void Interact(string interactOption)
     {
         if (optionClicked) optionClicked.PlaySound();
-        if (interactOption == "Store")
+        if (interactOption == "Pick Up")
         {
             Store();
         }
@@ -51,7 +51,7 @@ public class WorldItem : Interactable
         if(GetType() != typeof(FlyingArrow))
             foreach (FlyingArrow arrow in GetComponentsInChildren<FlyingArrow>())
             {
-                arrow.Interact("Store");
+                arrow.Interact("Pick Up");
             }
         PlayerInteract.runtime.OnExitZone(() => Destroy(gameObject));
     }

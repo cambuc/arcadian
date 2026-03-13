@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1059655951720738443}
-  - component: {fileID: 520550145331514291}
+  - component: {fileID: -6906687730329717387}
   m_Layer: 0
   m_Name: r_CookedVenison
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &520550145331514291
+--- !u!114 &-6906687730329717387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4340950398528856002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f98aeca7d7b464cac5840710781748, type: 3}
+  m_Script: {fileID: 11500000, guid: 85457e50684880941b0ac8aa892089a0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::CookingRecipe
   product: {fileID: -6022465726755726609, guid: 97feb8adeff67b246ac0aff3b670581c, type: 3}
-  timeInHours: 0.25
+  timeInHours: 0.5
   components:
   - item: {fileID: -2322227296768005938, guid: a13c2fb35cd2b204284f0750ee33c23b, type: 3}
     amount: 1
   toolTypes: []
+  craftInWorld: 1
+  drying: 0

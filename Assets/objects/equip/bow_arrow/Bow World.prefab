@@ -322,6 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   interactName: Bow
+  extraText: 
   item: {fileID: 8061688693916207224, guid: b9ddcccb1f4c55a4bb879482ac5f4571, type: 3}
   interactOptions:
   - text: Equip
@@ -330,7 +331,7 @@ MonoBehaviour:
     itemQuantity:
       item: {fileID: 0}
       amount: 1
-  - text: Store
+  - text: Pick Up
     interactTime: 0
     saveTime: 0
     itemQuantity:
@@ -410,5 +411,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7fb92b2e64ddc1c498dc1b0758355628, type: 3}
   - {fileID: 8300000, guid: 4a8db7a8428ac5d4f88e2e0ff4c208cd, type: 3}
   - {fileID: 8300000, guid: faa4db677a8c1f3439689ab2da18e174, type: 3}
+  group: {fileID: 0}
   volume: 1
   spatial: 0

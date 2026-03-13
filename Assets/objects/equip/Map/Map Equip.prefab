@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.104, y: -0.672}
+  m_AnchoredPosition: {x: 0.104, y: -0.714}
   m_SizeDelta: {x: 2.689, y: 0.362}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5308380580862798580
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5442972351916995867, guid: 66b7a52585354414da2b84c8e056fbbd, type: 2}
+  - {fileID: -4419779771086333835, guid: b945a2805689fb14a9ed0c355e429316, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,10 +106,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maidu Obsidian Mine
+  m_text: 'Maidu
+
+    Obsidian Mine'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 66b7a52585354414da2b84c8e056fbbd, type: 2}
-  m_sharedMaterial: {fileID: -5442972351916995867, guid: 66b7a52585354414da2b84c8e056fbbd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b945a2805689fb14a9ed0c355e429316, type: 2}
+  m_sharedMaterial: {fileID: -4419779771086333835, guid: b945a2805689fb14a9ed0c355e429316, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -215,7 +217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8526, y: 0.4961}
+  m_AnchoredPosition: {x: -0.833, y: 0.496}
   m_SizeDelta: {x: 2.689, y: 0.362}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &7073492715032115045
@@ -243,7 +245,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5442972351916995867, guid: 66b7a52585354414da2b84c8e056fbbd, type: 2}
+  - {fileID: -4419779771086333835, guid: b945a2805689fb14a9ed0c355e429316, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -287,12 +289,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Slaughterhouse
+  m_text: 'Rhyolite
 
     Spring'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 66b7a52585354414da2b84c8e056fbbd, type: 2}
-  m_sharedMaterial: {fileID: -5442972351916995867, guid: 66b7a52585354414da2b84c8e056fbbd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b945a2805689fb14a9ed0c355e429316, type: 2}
+  m_sharedMaterial: {fileID: -4419779771086333835, guid: b945a2805689fb14a9ed0c355e429316, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -426,7 +428,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5442972351916995867, guid: 66b7a52585354414da2b84c8e056fbbd, type: 2}
+  - {fileID: -4419779771086333835, guid: b945a2805689fb14a9ed0c355e429316, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -472,8 +474,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Desolation Creek
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 66b7a52585354414da2b84c8e056fbbd, type: 2}
-  m_sharedMaterial: {fileID: -5442972351916995867, guid: 66b7a52585354414da2b84c8e056fbbd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b945a2805689fb14a9ed0c355e429316, type: 2}
+  m_sharedMaterial: {fileID: -4419779771086333835, guid: b945a2805689fb14a9ed0c355e429316, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

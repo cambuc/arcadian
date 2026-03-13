@@ -10,9 +10,16 @@ public class TerrainSeasonChanger : MonoBehaviour
     public int snowLayerIndex;
     public int snowedOverLayerIndex;
 
-    public Material ponderosaLeaf;
-    public Texture2D ponderosaPlain;
-    public Texture2D ponderosaSnowy;
+    [System.Serializable]
+    public struct MaterialChange
+    {
+        public Material material;
+        public Texture2D winter;
+        public Texture2D spring;
+        public Texture2D summer;
+        public Texture2D fall;
+    }
+    public List<MaterialChange> materialChanges = new List<MaterialChange>();
 
     public List<HiddenWinterDetail> hiddenDetails = new List<HiddenWinterDetail>();
     [System.Serializable]
@@ -27,6 +34,8 @@ public class TerrainSeasonChanger : MonoBehaviour
     public Color summerGrassColor;
     public Color fallGrassColor;
 
+    int season;
+
     private void Awake()
     {
         TimeManager.seasonChanged.AddListener(OnSeasonChanged);
@@ -34,10 +43,9 @@ public class TerrainSeasonChanger : MonoBehaviour
 
     public void OnSeasonChanged()
     {
-        if(TimeManager.currentSeason == 4)
+        if(TimeManager.currentSeason == 4 && season != TimeManager.currentSeason)
         {
-            if (ponderosaLeaf.mainTexture == ponderosaSnowy)
-                return;
+            season = TimeManager.currentSeason;
 
             DetailPrototype[] protos = terrain.terrainData.detailPrototypes;
             foreach (HiddenWinterDetail i in hiddenDetails)
@@ -55,14 +63,14 @@ public class TerrainSeasonChanger : MonoBehaviour
                 }
             terrain.terrainData.SetAlphamaps(0, 0, map);
 
-            ponderosaLeaf.mainTexture = ponderosaSnowy;
+            for (int i = 0; i < materialChanges.Count; i++)
+                materialChanges[i].material.mainTexture = materialChanges[i].winter;
         }
-        else if (TimeManager.currentSeason == 1)
+        else if (TimeManager.currentSeason == 1 && season == 4)
         {
             grassMaterial.color = springGrassColor;
 
-            if (ponderosaLeaf.mainTexture == ponderosaPlain)
-                return;
+            season = TimeManager.currentSeason;
 
             DetailPrototype[] protos = terrain.terrainData.detailPrototypes;
             foreach (HiddenWinterDetail i in hiddenDetails)
@@ -80,15 +88,26 @@ public class TerrainSeasonChanger : MonoBehaviour
                 }
             terrain.terrainData.SetAlphamaps(0, 0, map);
 
-            ponderosaLeaf.mainTexture = ponderosaPlain;
+            for (int i = 0; i < materialChanges.Count; i++)
+                materialChanges[i].material.mainTexture = materialChanges[i].spring;
         }
-        else if (TimeManager.currentSeason == 2)
+        else if (TimeManager.currentSeason == 2 && season != TimeManager.currentSeason)
         {
+            season = TimeManager.currentSeason;
+
             grassMaterial.color = summerGrassColor;
+
+            for (int i = 0; i < materialChanges.Count; i++)
+                materialChanges[i].material.mainTexture = materialChanges[i].summer;
         }
-        else if (TimeManager.currentSeason == 3)
+        else if (TimeManager.currentSeason == 3 && season != TimeManager.currentSeason)
         {
+            season = TimeManager.currentSeason;
+
             grassMaterial.color = fallGrassColor;
+
+            for (int i = 0; i < materialChanges.Count; i++)
+                materialChanges[i].material.mainTexture = materialChanges[i].fall;
         }
     }
 }

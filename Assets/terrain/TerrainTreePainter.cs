@@ -19,7 +19,10 @@ public class TerrainTreePainter : MonoBehaviour
 
         public Vector2 scaleRange;
 
-        public float distanceFromWater;
+        public Vector2 distanceFromWater;
+
+        public Vector2Int clumpAmountRange;
+        public float clumpDistanceRange;
 
         public List<ZoneCount> zones;
     }
@@ -55,23 +58,33 @@ public class TerrainTreePainter : MonoBehaviour
                                                     Random.Range(include.start.y, include.end.y));
 
                         if (pos.y < zone.zone.heightRange.x || pos.y > zone.zone.heightRange.y ||
-                            (type.distanceFromWater > 0 && IsNearWater(pos, type.distanceFromWater)) ||
+                            !IsWithinWaterRange(pos, type.distanceFromWater) ||
                             IsWithinBounds(zone.zone.exclusions, pos.x, pos.z))
                                 continue;
 
-                        float scale = Random.Range(type.scaleRange.x, type.scaleRange.y);
-                        TreeInstance inst = new TreeInstance()
-                        {
-                            prototypeIndex = type.protoIndices[Random.Range(0, type.protoIndices.Count)],
-                            color = Color.white,
-                            position = new Vector3( pos.x / terrain.terrainData.size.x,
+                        int clumpAmount = Random.Range(type.clumpAmountRange.x, type.clumpAmountRange.y);
+                        pos = new Vector3(pos.x / terrain.terrainData.size.x,
                                                     pos.y / terrain.terrainData.size.y,
-                                                    pos.z / terrain.terrainData.size.z),
-                            heightScale = scale,
-                            widthScale = scale,
-                            rotation = Random.Range(0f, 360f)
-                        };
-                        instances.Add(inst);
+                                                    pos.z / terrain.terrainData.size.z);
+
+                        for(int c = 0; c < clumpAmount; c++)
+                        {
+                            if(c > 1)
+                                pos += new Vector3( Random.Range(-type.clumpDistanceRange, type.clumpDistanceRange), 0,
+                                                    Random.Range(-type.clumpDistanceRange, type.clumpDistanceRange));
+
+                            float scale = Random.Range(type.scaleRange.x, type.scaleRange.y);
+                            TreeInstance inst = new TreeInstance()
+                            {
+                                prototypeIndex = type.protoIndices[Random.Range(0, type.protoIndices.Count)],
+                                color = Color.white,
+                                position = pos,
+                                heightScale = scale,
+                                widthScale = scale,
+                                rotation = Random.Range(0f, 360f)
+                            };
+                            instances.Add(inst);
+                        }
                     }
                 }
         }
@@ -82,12 +95,12 @@ public class TerrainTreePainter : MonoBehaviour
     {
         return new Vector3(x, terrain.SampleHeight(new Vector3(x, 0, y)), y);
     }
-    public bool IsNearWater(Vector3 position, float minDistance)
+    public bool IsWithinWaterRange(Vector3 position, Vector2 range)
     {
         float d = 1 - waterMap.GetPixel((int)(position.x * (waterMap.width / terrain.terrainData.size.x)),
                                         (int)(position.z * (waterMap.height / terrain.terrainData.size.z))).r;
 
-        return d * 255 < minDistance;
+        return d * 255 >= range.x && d * 255 <= range.y;
     }
 
     bool IsWithinBounds(List<TerrainZone.Bounds> bounds, float x, float y)

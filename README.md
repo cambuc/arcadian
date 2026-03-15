@@ -1,6 +1,6 @@
 # Arcadian
 
-**Arcadian** is a survival game prototype built in **Unity with C#**, aiming to capture wilderness survival as realistically as possible.  
+**Arcadian** is a survival game demo built in **Unity with C#**, aiming to capture wilderness survival as realistically as possible.  
 This repository serves as a **technical portfolio project** demonstrating gameplay systems, procedural environment tools, and clean Unity architecture.
 
 ---
@@ -25,7 +25,7 @@ The project emphasizes **system design, procedural generation, and gameplay arch
   - HUD menu allows players to scroll through available actions
 
 - **Terrain Creation Tools**
-  - Convert heightmap into usable in-game **topographic map**
+  - Converts heightmap into usable in-game **topographic map**
   - Procedural terrain generation utilities
 
 - **Procedural Environment Placement**
@@ -44,6 +44,10 @@ The project emphasizes **system design, procedural generation, and gameplay arch
 
 - **LOD Tree System**
   - Performance-optimized vegetation rendering
+
+- **Fauna Navigation**
+  - Animals roam around the world to preset locations
+  - Can be spooked by the player through loud noise or getting too close
 
 ---
 

@@ -157,9 +157,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldItem
   interactable: 1
   interactName: Pine Branch
+  extraText: 
   item: {fileID: -7433702141582746586, guid: 950c05a83529c3b44ae8cddc8a119dd6, type: 3}
   interactOptions:
-  - text: Store
+  - text: Pick Up
     interactTime: 0
     saveTime: 0
     itemQuantity:
@@ -191,5 +192,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b770b81db4007fc4bbd6ac9865ce6760, type: 3}
   - {fileID: 8300000, guid: 61a970465704a55458b3de70d9284a92, type: 3}
   - {fileID: 8300000, guid: 55ce17046bad43340b83072f72790d8f, type: 3}
+  group: {fileID: 0}
   volume: 1
   spatial: 0

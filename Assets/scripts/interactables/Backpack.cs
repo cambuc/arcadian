@@ -8,6 +8,8 @@ public class Backpack : Container
 
     public override void Interact(string interactOption)
     {
+        
+
         if (interactOption == "Wear")
         {
             WearPack();

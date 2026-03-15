@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CraftingRecipe : MonoBehaviour
@@ -29,6 +30,7 @@ public class CraftingRecipe : MonoBehaviour
 
     public bool HasComponents()
     {
+        craftInWorld = true;
         foreach (ItemQuantity comp in components)
         {
             if (!PlayerInventory.runtime.HasItemsSurroundings(comp.ToList()))
@@ -65,7 +67,7 @@ public class CraftingRecipe : MonoBehaviour
         List<Item> items = PlayerInventory.runtime.IncludeSurroundingItems();
         foreach (ItemQuantity comp in components)
         {
-            int q = items.Where(i => i == comp.item).Count() / comp.amount;
+            int q = items.Where(i => i.itemName == comp.item.itemName).Count() / comp.amount;
 
             if (q < lowest || lowest == -1) lowest = q;
         }
@@ -73,7 +75,18 @@ public class CraftingRecipe : MonoBehaviour
     }
     public virtual void CraftInWorld(int amount, CraftingStation station)
     {
+        if(timeInHours <= 0)
+        {
+            PlayerInventory.runtime.AddItem(product);
+            return;
+        }
 
+        for(int i = 0; i < amount; i++)
+        {
+            WorldItem world = product.Drop();
+            UnfinishedProduct up = world.AddComponent<UnfinishedProduct>();
+            up.Initialize(this, world);
+        }
     }
 }
 [System.Serializable]

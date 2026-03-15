@@ -72,6 +72,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8cdb160814e83d45827d04cc0eabc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Campfire
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
   interactable: 1
   interactName: Campfire
   extraText: 
@@ -90,25 +93,40 @@ MonoBehaviour:
   - {fileID: -6906687730329717387, guid: 784fe1d19bcd41941a4d19513af30855, type: 3}
   - {fileID: 1742125267771926362, guid: 96c4cb8b75db92b43ae5bf2fa0b85ff3, type: 3}
   - {fileID: -1997117744363243986, guid: cf5dd03c1e03e6b4d903d6818d51c26e, type: 3}
-  - {fileID: 520550145331514291, guid: f652796fd859a104b9eabd7f3c97288a, type: 3}
   flames: {fileID: 2625332206349723180}
+  tempZone: {fileID: 2038184399183139572}
+  fireTemperature: 30
   secondsToStartFire: 60
   fireStarting:
   - {fileID: 3914879309224082409, guid: 3b2ee75e01b167e4b81ff836b2b67f1d, type: 3}
   - {fileID: 3914879309224082409, guid: 4f6aca860edbc574491519c2238e1ea3, type: 3}
-  firewood:
-  - {fileID: 5997696837974842501, guid: 3a16d485f6f2f8c42b1d31b73b27cf67, type: 3}
+  fireRestarting:
   - {fileID: 5997696837974842501, guid: 28c0c67ca2896ad4fb8eecb35ef153a0, type: 3}
-  - {fileID: -853179339854352053, guid: 4538a33d67a7924449168b05ae1644be, type: 3}
-  - {fileID: -7433702141582746586, guid: 950c05a83529c3b44ae8cddc8a119dd6, type: 3}
-  - {fileID: -853179339854352053, guid: e258eaa03c92cde4cad6ac0a26aa0e3f, type: 3}
+  firewood:
+  - fuel: {fileID: 5997696837974842501, guid: 3a16d485f6f2f8c42b1d31b73b27cf67, type: 3}
+    burnTimeSec: 1200
+  - fuel: {fileID: 5997696837974842501, guid: 28c0c67ca2896ad4fb8eecb35ef153a0, type: 3}
+    burnTimeSec: 120
+  - fuel: {fileID: -853179339854352053, guid: 4538a33d67a7924449168b05ae1644be, type: 3}
+    burnTimeSec: 2200
+  - fuel: {fileID: -7433702141582746586, guid: 950c05a83529c3b44ae8cddc8a119dd6, type: 3}
+    burnTimeSec: 1800
+  - fuel: {fileID: 5997696837974842501, guid: 6fbd02905b71e4d47af63b429a6954b9, type: 3}
+    burnTimeSec: 60
+  - fuel: {fileID: 5997696837974842501, guid: a2a4fe13d9cacde4c8fd79c4a0745649, type: 3}
+    burnTimeSec: 7200
+  - fuel: {fileID: 5997696837974842501, guid: 41d3fc1fa6b80e6499b96013feaa0709, type: 3}
+    burnTimeSec: 5400
+  - fuel: {fileID: -853179339854352053, guid: e258eaa03c92cde4cad6ac0a26aa0e3f, type: 3}
+    burnTimeSec: 180
   baseFireTimeScnds: 1800
   fuelAddTime: 600
+  maxFireTime: 5400
   interactSound: {fileID: -6496920113129478229}
   addFuelSound: {fileID: -363105371711436667}
   cookingMeatPrefab: {fileID: -8914165396711436351, guid: 63e89d5925ab0504c885ef061afbb9e7, type: 3}
   distanceCooking: 1
-  distanceDrying: 1.5
+  distanceDrying: 1.75
   spacing: 0.1
 --- !u!114 &-6496920113129478229
 MonoBehaviour:

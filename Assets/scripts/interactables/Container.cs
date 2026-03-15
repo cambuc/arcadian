@@ -60,6 +60,8 @@ public class Container : Interactable
 
     public override void Interact(string interactOption)
     {
+        
+
         optionSound.PlaySound();
 
         if(interactOption == "Store")

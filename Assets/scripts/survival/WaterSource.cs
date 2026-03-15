@@ -47,6 +47,8 @@ public class WaterSource : Interactable
 
     public override void Interact(string interactOption)
     {
+        
+
         if (interactOption == "Drink")
         {
             if (waterPlayer) waterPlayer.PlaySound();

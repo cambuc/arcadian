@@ -8,6 +8,8 @@ public class ForageItem : WorldItem
 
     public override void Interact(string interactOption)
     {
+        
+
         if (interactOption == "Harvest")
         {
             if (onHarvest) onHarvest.PlaySound();

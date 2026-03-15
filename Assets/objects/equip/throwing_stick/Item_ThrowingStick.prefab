@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Throwing Stick
   icon: {fileID: 2800000, guid: d98295e06abc17d49b5ef9b47604fa7b, type: 3}
-  worldObject: {fileID: 0}
+  worldObject: {fileID: -5303413045640736796, guid: b12a58c837b343f40b9ba3ae0ea361f9, type: 3}
   equippable: {fileID: 486866459956380587, guid: 48237662738255046bbb4b88a9325d8d, type: 3}
   weight: 3
   dimensions: {x: 3, y: 1}

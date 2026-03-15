@@ -1,17 +1,29 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Campfire : CraftingStation
 {
     public GameObject flames;
+    public TemperatureZone tempZone;
+    public float fireTemperature;
 
     public int secondsToStartFire;
 
     public List<Item> fireStarting = new List<Item>();
-    public List<Item> firewood = new List<Item>();
+    public List<Item> fireRestarting = new List<Item>();
+
+    [System.Serializable]
+    public struct Firewood
+    {
+        public Item fuel;
+        public float burnTimeSec;
+    }
+    public List<Firewood> firewood = new List<Firewood>();
 
     public float baseFireTimeScnds;
     public float fuelAddTime;
+    public float maxFireTime;
     public float fireTime { get; private set; }
 
     public SoundPlayer interactSound;
@@ -23,23 +35,41 @@ public class Campfire : CraftingStation
     public float distanceDrying;
     public float spacing;
 
+    bool extinguished;
+
     private void Awake()
     {
         GameTick.tick.AddListener(Tick);
         TimeManager.timePassed.AddListener((float timePassed) => { fireTime -= timePassed; });
     }
 
+    public override void SetInteractOptions()
+    {
+    }
+
     private void OnEnable()
     {
-        Extinguish();
+        flames.SetActive(false);
+        tempZone.temperatureModifier = 0;
+        extinguished = true;
+
+        interactOptions.Clear();
+        interactOptions.Add(new InteractOption() { text = "Start Fire" });
+        interactOptions.Add(new InteractOption() { text = "Tear Down", interactTime = 0.5f });
+
+        if (CraftingMenu.runtime.currentStation == (CraftingStation)this)
+            CraftingMenu.runtime.CloseMenu();
     }
 
     public void Extinguish()
     {
         flames.SetActive(false);
+        tempZone.temperatureModifier = 0;
+        extinguished = true;
 
         interactOptions.Clear();
-        interactOptions.Add(new InteractOption() { text = "Start Fire" });
+        interactOptions.Add(new InteractOption() { text = "Restart Fire" });
+        interactOptions.Add(new InteractOption() { text = "Tear Down", interactTime = 0.5f });
 
         if (CraftingMenu.runtime.currentStation == (CraftingStation)this)
             CraftingMenu.runtime.CloseMenu();
@@ -55,12 +85,26 @@ public class Campfire : CraftingStation
         else if (interactOption == "Add Fuel")
         {
             interactable = false;
-            PlayerInventoryUI.runtime.OpenFilteredInventory(firewood, AddFuel);
+            List<Item> includes = new List<Item>();
+            foreach(Firewood f in firewood)
+            {
+                includes.Add(f.fuel);
+            }
+            PlayerInventoryUI.runtime.OpenFilteredInventory(includes, AddFuel);
         }
         else if(interactOption == "Start Fire")
         {
             interactable = false;
             PlayerInventoryUI.runtime.OpenFilteredInventory(fireStarting, LightFire);
+        }
+        else if (interactOption == "Restart Fire")
+        {
+            interactable = false;
+            PlayerInventoryUI.runtime.OpenFilteredInventory(fireRestarting, RelightFire);
+        }
+        else if(interactOption == "Tear Down")
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -79,6 +123,8 @@ public class Campfire : CraftingStation
         Fader.runtime.FadeOut(() =>
         {
             flames.SetActive(true);
+            tempZone.temperatureModifier = fireTemperature;
+            extinguished = false;
 
             TimeManager.runtime.PassTime(secondsToStartFire * tool.timeMultiplier);
             fireTime = baseFireTimeScnds;
@@ -86,6 +132,37 @@ public class Campfire : CraftingStation
             interactOptions.Clear();
             interactOptions.Add(new InteractOption() { text = "Craft" });
             interactOptions.Add(new InteractOption() { text = "Add Fuel" });
+            interactOptions.Add(new InteractOption() { text = "Tear Down", interactTime = 0.5f });
+
+            Fader.runtime.FadeIn(() =>
+            {
+                interactable = true;
+            });
+        });
+    }
+    public void RelightFire(Item kindling)
+    {
+        if (kindling == null)
+        {
+            interactable = true;
+            return;
+        }
+
+        PlayerInventory.runtime.RemoveItem(kindling);
+
+        Fader.runtime.FadeOut(() =>
+        {
+            flames.SetActive(true);
+            tempZone.temperatureModifier = fireTemperature;
+            extinguished = false;
+
+            TimeManager.runtime.PassTime(secondsToStartFire);
+            fireTime = baseFireTimeScnds;
+
+            interactOptions.Clear();
+            interactOptions.Add(new InteractOption() { text = "Craft" });
+            interactOptions.Add(new InteractOption() { text = "Add Fuel" });
+            interactOptions.Add(new InteractOption() { text = "Tear Down", interactTime = 0.5f });
 
             Fader.runtime.FadeIn(() =>
             {
@@ -101,9 +178,12 @@ public class Campfire : CraftingStation
         if (fuel == null)
             return;
 
+        Firewood fw = firewood.Find(f => f.fuel.itemName == fuel.itemName);
+
         addFuelSound.PlaySound();
 
-        fireTime += fuelAddTime;
+        if(fireTime <= maxFireTime)
+            fireTime += fw.burnTimeSec;
         PlayerInventory.runtime.RemoveItem(fuel);
     }
 
@@ -112,7 +192,7 @@ public class Campfire : CraftingStation
         if(fireTime <= 0)
         {
             extraText = "";
-            Extinguish();
+            if (!extinguished) Extinguish();
         }
         else
         {

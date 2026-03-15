@@ -35,7 +35,7 @@ public class Item : MonoBehaviour
         return dimensions.x * dimensions.y + (dimensions.y > dimensions.x ? 0.5f : 0);
     }
 
-    public virtual void Drop()
+    public virtual WorldItem Drop()
     {
         WorldItem instance = Instantiate(worldObject == null ? PlayerInventory.runtime.defaultWorldItem.gameObject : worldObject.gameObject).GetComponent<WorldItem>();
         instance.SetItem(this);
@@ -48,6 +48,8 @@ public class Item : MonoBehaviour
         PlayerInventory.runtime.RemoveItem(this);
 
         if (equippable && PlayerEquip.runtime.current == equippable) PlayerEquip.runtime.Unequip(equippable);
+
+        return instance;
     }
 
     public Item Clone()

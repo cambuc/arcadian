@@ -156,21 +156,27 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        Item newItem = item.Clone();
-        newItem.NewId();
-        items.Add(newItem);
+        if(item.id == Guid.Empty)
+        {
+            Item newItem = item.Clone();
+            newItem.NewId();
+            AddItem(newItem);
+            return;
+        }
+
+        items.Add(item);
 
         if (FilledSlots() > slots)
         {
-            items.Find(i => i.itemName == newItem.itemName).Drop();
+            items.Find(i => i.itemName == item.itemName).Drop();
             ShowFullInventoryMessage();
         }
-        if (newItem.GetComponent<FirearmItem>())
+        if (item.GetComponent<FirearmItem>())
         {
-            newItem.GetComponent<FirearmItem>().loadedCount = 0;
-            newItem.GetComponent<FirearmItem>().chambered = false;
+            item.GetComponent<FirearmItem>().loadedCount = 0;
+            item.GetComponent<FirearmItem>().chambered = false;
         }
-        newItem.OnAdd();
+        item.OnAdd();
         onInventoryChanged.Invoke();
     }
     async void ShowFullInventoryMessage()

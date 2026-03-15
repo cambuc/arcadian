@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
+    public UnityEvent onInteract = new UnityEvent();
+
     public bool interactable = true;
 
     public string interactName;
@@ -30,6 +33,8 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact(string interactOption)
     {
+        
+
         if (interactOption == "Grab")
         {
             Grab();
@@ -79,6 +84,8 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
+        OnUpdate();
+
         if (!grabbing)
             return;
 
@@ -105,8 +112,6 @@ public class Interactable : MonoBehaviour
                 rb.isKinematic = false;
             }
         }
-
-        OnUpdate();
     }
 
     public virtual void OnUpdate() { }

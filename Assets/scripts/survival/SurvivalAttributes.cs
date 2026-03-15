@@ -121,15 +121,15 @@ public class SurvivalAttributes : MonoBehaviour
         float high = PlayerApparel.runtime.idealTemperatureRange.y;
         float ideal = (low + high) / 2f;
 
+        foreach (float add in addersTemperature.Values)
+        {
+            amb += add;
+        }
         float adder = (amb > high ? amb - high : amb < low ? amb - low : 0) * (multDrainTemperature * tempConstant);
         if (adder == 0) adder = -Ceiling(temperature) * (multRecoverTemperature * tempConstant);
         if ((temperature > 0 && amb < low) || temperature < 0 && amb > high)
             adder *= multRecoverTemperature;
 
-        foreach (float add in addersTemperature.Values)
-        {
-            adder += add;
-        }
         return adder;
     }
     int Ceiling(float num)

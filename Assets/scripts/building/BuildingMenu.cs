@@ -173,17 +173,18 @@ public class BuildingMenu : MonoBehaviour
     void PlaceBuilding()
     {
         buildSound.PlaySound();
-        PlayerMovement.LockMovement(gameObject, true);
-        Cursor.visible = false;
-        Fader.runtime.FadeOut(OnFadeOut);
+        //PlayerMovement.LockMovement(gameObject, true);
+        //Cursor.visible = false;
+        //Fader.runtime.FadeOut(OnFadeOut);
+        OnFadeOut();
 
-        foreach(ItemQuantity iq in selections[selectionIndex].recipe.components)
+        foreach (ItemQuantity iq in selections[selectionIndex].recipe.components)
             for(int i = 0; i < iq.amount; i++)
                 PlayerInventory.runtime.RemoveItemIncludeSurroundings(iq.item);
     }
     void OnFadeOut()
     {
-        TimeManager.runtime.PassTime(preview.recipe.timeInHours * 60f * 60f);
+        //TimeManager.runtime.PassTime(preview.recipe.timeInHours * 60f * 60f);
 
         int cx = (int)(preview.transform.position.z * (terrain.terrainData.detailResolution / terrain.terrainData.size.z));
         int cy = (int)(preview.transform.position.x * (terrain.terrainData.detailResolution / terrain.terrainData.size.x));
@@ -205,7 +206,7 @@ public class BuildingMenu : MonoBehaviour
         SelectRecipe(selectionIndex);
 
         CloseMenu();
-        Fader.runtime.FadeIn();
-        PlayerMovement.LockMovement(gameObject, false);
+        //Fader.runtime.FadeIn();
+        //PlayerMovement.LockMovement(gameObject, false);
     }
 }

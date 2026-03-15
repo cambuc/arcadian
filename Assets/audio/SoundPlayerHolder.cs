@@ -11,6 +11,8 @@ public class SoundPlayerHolder : MonoBehaviour
     public SoundPlayer sfxSelect;
     public SoundPlayer sfxClick;
 
+    public SoundPlayer woodCarve;
+
     public SoundPlayer fleshClick;
 
     private void Awake()

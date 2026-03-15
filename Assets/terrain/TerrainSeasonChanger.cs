@@ -34,7 +34,7 @@ public class TerrainSeasonChanger : MonoBehaviour
     public Color summerGrassColor;
     public Color fallGrassColor;
 
-    int season;
+    public int lastSeason;
 
     private void Awake()
     {
@@ -43,9 +43,9 @@ public class TerrainSeasonChanger : MonoBehaviour
 
     public void OnSeasonChanged()
     {
-        if(TimeManager.currentSeason == 4 && season != TimeManager.currentSeason)
+        if(TimeManager.currentSeason == 4 && lastSeason != TimeManager.currentSeason)
         {
-            season = TimeManager.currentSeason;
+            lastSeason = TimeManager.currentSeason;
 
             DetailPrototype[] protos = terrain.terrainData.detailPrototypes;
             foreach (HiddenWinterDetail i in hiddenDetails)
@@ -66,11 +66,11 @@ public class TerrainSeasonChanger : MonoBehaviour
             for (int i = 0; i < materialChanges.Count; i++)
                 materialChanges[i].material.mainTexture = materialChanges[i].winter;
         }
-        else if (TimeManager.currentSeason == 1 && season == 4)
+        else if (TimeManager.currentSeason == 1 && lastSeason == 4)
         {
             grassMaterial.color = springGrassColor;
 
-            season = TimeManager.currentSeason;
+            lastSeason = TimeManager.currentSeason;
 
             DetailPrototype[] protos = terrain.terrainData.detailPrototypes;
             foreach (HiddenWinterDetail i in hiddenDetails)
@@ -91,18 +91,18 @@ public class TerrainSeasonChanger : MonoBehaviour
             for (int i = 0; i < materialChanges.Count; i++)
                 materialChanges[i].material.mainTexture = materialChanges[i].spring;
         }
-        else if (TimeManager.currentSeason == 2 && season != TimeManager.currentSeason)
+        else if (TimeManager.currentSeason == 2 && lastSeason != TimeManager.currentSeason)
         {
-            season = TimeManager.currentSeason;
+            lastSeason = TimeManager.currentSeason;
 
             grassMaterial.color = summerGrassColor;
 
             for (int i = 0; i < materialChanges.Count; i++)
                 materialChanges[i].material.mainTexture = materialChanges[i].summer;
         }
-        else if (TimeManager.currentSeason == 3 && season != TimeManager.currentSeason)
+        else if (TimeManager.currentSeason == 3 && lastSeason != TimeManager.currentSeason)
         {
-            season = TimeManager.currentSeason;
+            lastSeason = TimeManager.currentSeason;
 
             grassMaterial.color = fallGrassColor;
 

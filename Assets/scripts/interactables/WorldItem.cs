@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,14 +26,22 @@ public class WorldItem : Interactable
 
     public void SetItem(Item item)
     {
+        if (item.id == Guid.Empty)
+        {
+            Item newItem = item.Clone();
+            newItem.NewId();
+            SetItem(newItem);
+            return;
+        }
+
         this.item = item;
         interactName = item.itemName;
-        item = item.Clone();
-        item.NewId();
     }
 
     public override void Interact(string interactOption)
     {
+        
+
         if (optionClicked) optionClicked.PlaySound();
         if (interactOption == "Pick Up")
         {

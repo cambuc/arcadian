@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(DownedAnimal))]
 public class FaunaBehavior : Attackable
 {
     public static UnityEvent<bool> spookEvent = new UnityEvent<bool>();
@@ -155,11 +157,13 @@ public class FaunaBehavior : Attackable
         }
     }
 
-    void ListenForThreat(bool loud)
+
+    async void ListenForThreat(bool loud)
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, loud ? hearLoudRadius : hearRadius, LayerMask.GetMask("Player"));
         if(cols.Length > 0)
         {
+            await Task.Delay(250);
             SetThreat(cols[0].gameObject);
             return;
         }
@@ -211,7 +215,6 @@ public class FaunaBehavior : Attackable
         {
             onDeath.Invoke();
 
-            gameObject.AddComponent<DownedAnimal>();
             gameObject.GetComponent<DownedAnimal>().Initiate(this);
 
             //Vector3 pos = transform.position;

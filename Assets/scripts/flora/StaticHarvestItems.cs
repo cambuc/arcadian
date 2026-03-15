@@ -23,6 +23,8 @@ public class StaticHarvestItems : Interactable
 
     public override void Interact(string interactOption)
     {
+        
+
         if (interactOption == "Fell")
         {
             GetComponent<TreeFeller>().Interact();

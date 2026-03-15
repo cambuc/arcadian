@@ -32,6 +32,8 @@ public class CookingProduct : Interactable
 
     public override void Interact(string interactOption)
     {
+        
+
         SoundPlayerHolder.runtime.fleshClick.PlaySound();
         if(timeToCook > 0)
         {

@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   product: {fileID: 8061688693916207224, guid: 65f4548ef31713f40bac9a3ac51b1fc2, type: 3}
-  timeInHours: 0
+  timeInHours: 0.05
   components:
   - item: {fileID: 5997696837974842501, guid: 0b33e91e8db45e142ade689a78a8d4f1, type: 3}
     amount: 1
   toolTypes: []
+  craftInWorld: 1

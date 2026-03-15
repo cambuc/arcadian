@@ -12,6 +12,7 @@ public class DownedAnimal : Interactable
     {
         this.fb = fb;
         gameObject.layer = LayerMask.NameToLayer("Interactable");
+        interactable = true;
 
         harvestItems = fb.harvestItems;
         harvestSound = fb.harvestCarcassSound;
@@ -22,6 +23,8 @@ public class DownedAnimal : Interactable
 
     public override void Interact(string interactOption)
     {
+        
+
         if (interactOption == "Harvest")
         {
             Harvest();

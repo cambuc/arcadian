@@ -52,8 +52,17 @@ public class PlayerInteract : MonoBehaviour
             return;
         }
 
-        Interactable inst = hit.transform ? hit.transform.GetComponent<Interactable>() : null;
-        inst = inst == null ? (hit.transform && hit.transform.parent ? hit.transform.parent.GetComponent<Interactable>() : inst) : inst;
+        Interactable inst = null;
+        foreach (Interactable interactComponent in hit.transform.GetComponents<Interactable>())
+        {
+            if (interactComponent.interactable)
+            {
+                inst = interactComponent;
+                break;
+            }
+        }
+        if(inst == null)
+            inst = hit.transform.parent ? hit.transform.parent.GetComponent<Interactable>() : inst;
         if (inst != null && inst.interactable)
         {
             if(inst != currentInst)
@@ -94,6 +103,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 timer = InteractOptionsMenu.runtime.GetSelectedOption().types.interactTime;
                 inst.Interact(InteractOptionsMenu.runtime.GetSelectedOptionString());
+                inst.onInteract.Invoke();
                 OnExitZone();
             }
         }

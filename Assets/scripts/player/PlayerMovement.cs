@@ -45,6 +45,34 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    static Dictionary<GameObject, bool> stopMovementRegistry = new Dictionary<GameObject, bool>();
+    public static bool IsMovementStopped()
+    {
+        foreach (GameObject gm in stopMovementRegistry.Keys)
+        {
+            stopMovementRegistry.TryGetValue(gm, out bool value);
+            if (value)
+                return true;
+        }
+        return false;
+    }
+    public static void StopMovement(GameObject instance, bool value)
+    {
+        if (stopMovementRegistry.ContainsKey(instance))
+            stopMovementRegistry[instance] = value;
+        else
+            stopMovementRegistry.Add(instance, value);
+
+        if (IsMovementStopped())
+        {
+            runtime.rb.isKinematic = true;
+        }
+        else
+        {
+            runtime.rb.isKinematic = false;
+        }
+    }
+
     [Header("Movement")]
     public float speed = 3f;
     public float diagonalMult = .75f;
@@ -110,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         baseCamHeight = cam.transform.localPosition.y;
 
         LockMovement(gameObject, false);
+        StopMovement(gameObject, false);
 
         SurvivalAttributes.runtime.multipliersThirst.Add("movement", 0);
         SurvivalAttributes.runtime.multipliersHunger.Add("movement", 0);
@@ -119,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
     bool hasJumped = false;
     private void FixedUpdate()
     {
-        if (IsMovementLocked())
+        if (IsMovementLocked() || IsMovementStopped())
             return;
 
         float speedAdjust = 1;

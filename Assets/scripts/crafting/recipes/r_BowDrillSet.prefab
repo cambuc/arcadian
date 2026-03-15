@@ -53,9 +53,8 @@ MonoBehaviour:
     amount: 1
   - item: {fileID: 8061688693916207224, guid: e2d3c04cbf920b448b8c4d714db04e5f, type: 3}
     amount: 1
-  - item: {fileID: 8061688693916207224, guid: 813354d852876824aa66b14502a157a3, type: 3}
-    amount: 1
   - item: {fileID: 8061688693916207224, guid: e2d3c04cbf920b448b8c4d714db04e5f, type: 3}
     amount: 1
   toolTypes:
   - {fileID: 2446872513913268535, guid: 779225a4485f9d74ab1bbb6a99a46604, type: 3}
+  craftInWorld: 0

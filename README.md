@@ -1,16 +1,67 @@
-The demo for Arcadian: a survival game based directly off my own experience learning how to live in the wild
+# Arcadian
 
-Controls:
-Hold "tab" for hud wheel
-"shift" to sprint
-Control to crouch
+**Arcadian** is a survival game prototype built in **Unity with C#**, aiming to capture wilderness survival as realistically as possible.  
+This repository serves as a **technical portfolio project** demonstrating gameplay systems, procedural environment tools, and clean Unity architecture.
 
-Inventory
-  Select items with left click and use in context menu
-  Right click can be used to drop items
+---
 
-Building
-  Rotate with left and right click
-  'G' can be used to detach/attach from ground
+## Overview
+
+Arcadian focuses on realistic survival mechanics and dynamic environments.  
+The project emphasizes **system design, procedural generation, and gameplay architecture** rather than a finished commercial game.
+
+---
+
+## Features
+
+- **Crafting System**
+  - Modular crafting framework for tools and survival items
+
+- **Physical Inventory**
+  - Tile-based inventory system with spatial item placement
+
+- **Advanced Interaction System**
+  - Objects can expose multiple interaction types
+  - HUD menu allows players to scroll through available actions
+
+- **Terrain Creation Tools**
+  - Convert heightmap into usable in-game **topographic map**
+  - Procedural terrain generation utilities
+
+- **Procedural Environment Placement**
+  - Randomized object placement based on:
+    - Biomes / zones
+    - Terrain height
+    - environmental rules
+
+- **Dynamic Seasons**
+  - Terrain and flora change based on seasonal cycles
+
+- **Realistic Sun Movement**
+  - Uses real **DateTime**
+  - Adjusts brightness and sky position based on time of year
+  - Sun position calculated with **sin/cos wave functions**
+
+- **LOD Tree System**
+  - Performance-optimized vegetation rendering
+
+---
+
+## Tech Stack
+
+- **Engine:** Unity  
+- **Language:** C#  
+- **Focus:** Gameplay systems, procedural tools, environment simulation
+
+---
+
+## Purpose
+
+This project exists to **demonstrate Unity development skills to potential employers**, including:
+
+- Gameplay system architecture
+- Procedural world tools
+- Performance considerations
+- Clean, maintainable C# code
 
 This demo is provided for evaluation purposes only. All code, assets, and design are © Cameron Buchanan. Redistribution or reuse without permission is prohibited.
